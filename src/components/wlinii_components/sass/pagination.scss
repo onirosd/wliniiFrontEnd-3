@@ -1,0 +1,58 @@
+@import "./_variables.scss";
+
+.pagination {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  .btn {
+    height: 32px;
+    width: 32px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    margin: 12px 6px;
+    border-radius: 50%;
+    background-color: #fff !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    &.active {
+      background-color: $primary !important;
+      color: white;
+    }
+    &:disabled {
+      color: #aaaaaa;
+      &.prev-btn,
+      &.next-btn {
+        .prev-icon,
+        .next-icon {
+          border-color: #aaaaaa;
+        }
+      }
+    }
+    &.prev-btn,
+    &.next-btn {
+      .prev-icon,
+      .next-icon {
+        width: 8px;
+        height: 8px;
+        border: 2px solid #000;
+        transform: rotate(135deg);
+      }
+
+      .prev-icon {
+        border-top: none;
+        border-left: none;
+      }
+
+      .next-icon {
+        border-bottom: none;
+        border-right: none;
+      }
+    }
+  }
+}

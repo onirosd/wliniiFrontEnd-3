@@ -1,0 +1,129 @@
+@import "./_variables.scss";
+
+.primary {
+    background-color: $primary;
+}
+.secondary {
+    background-color: $secondary;
+}
+.tertiary {
+    background-color: $tertiary;
+}
+.accent {
+    background-color: $accent;
+}
+.success {
+    background-color: $success;
+}
+.error {
+    background-color: $error;
+}
+.black {
+    background-color: black;
+}
+.white {
+    background-color: white;
+}
+.default {
+    background-color: $default;
+}
+
+.primary-text {
+    color: $primary;
+}
+.secondary-text {
+    color: $secondary;
+}
+.tertiary-text {
+    color: $tertiary;
+}
+.accent-text {
+    color: $accent;
+}
+.success-text {
+    color: $success;
+}
+.error-text {
+    color: $error;
+}
+.black-text {
+    color: black;
+}
+.white-text {
+    color: white;
+}
+.default-text {
+    color: $default;
+}
+
+.primary-border {
+    border-color: $primary;
+}
+.secondary-border {
+    border-color: $secondary;
+}
+.tertiary-border {
+    border-color: $tertiary;
+}
+
+$sizes: (
+    "xs": 0px,
+    "sm": 576px,
+    "md": 768px,
+    "lg": 992px,
+    "xl": 1200px,
+);
+
+@each $name, $size in $sizes {
+    @media (min-width: $size) {
+        .primary-#{$name} {
+            background-color: $primary;
+        }
+        .secondary-#{$name} {
+            background-color: $secondary;
+        }
+        .tertiary-#{$name} {
+            background-color: $tertiary;
+        }
+        .accent-#{$name} {
+            background-color: $accent;
+        }
+        .success-#{$name} {
+            background-color: $success;
+        }
+        .error-#{$name} {
+            background-color: $error;
+        }
+        .black-#{$name} {
+            background-color: black;
+        }
+        .white-#{$name} {
+            background-color: white;
+        }
+
+        .primary-text-#{$name} {
+            color: $primary;
+        }
+        .secondary-text-#{$name} {
+            color: $secondary;
+        }
+        .tertiary-text-#{$name} {
+            color: $tertiary;
+        }
+        .accent-text-#{$name} {
+            color: $accent;
+        }
+        .success-text-#{$name} {
+            color: $success;
+        }
+        .error-text-#{$name} {
+            color: $error;
+        }
+        .black-text-#{$name} {
+            color: black;
+        }
+        .white-text-#{$name} {
+            color: white;
+        }
+    }
+}

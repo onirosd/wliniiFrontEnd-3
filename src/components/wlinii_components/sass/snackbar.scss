@@ -1,0 +1,35 @@
+.snackbar {
+  .snackbar-card {
+    height: auto;
+    width: auto;
+    min-width: 132px;
+    max-width: 485px;
+    overflow: hidden;
+    padding: 12px 24px;
+    position: fixed;
+    z-index: 9;
+    top: 16px;
+    right: 16px;
+    background-color: #405470;
+    color: #ffffff;
+    border-radius: 15px 15px 15px 0px;
+    transform-origin: bottom left;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    .close-card {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+  }
+  .snackbar-action {
+    position: relative;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+  }
+}

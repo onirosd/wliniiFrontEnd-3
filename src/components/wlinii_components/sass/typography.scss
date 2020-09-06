@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto-Light";
+  src: url("../fonts/Roboto-Light.ttf") format("truetype");
+}
+
+html {
+  font-family: Roboto-Regular, sans-serif;
+  font-weight: normal;
+}
+
+.bold {
+  font-family: Roboto-Bold, sans-serif;
+  font-weight: bold;
+}
+
+.light {
+  font-family: Roboto-Light, sans-serif;
+  font-weight: lighter;
+}
+
+.title {
+  font-size: 55px;
+}
+
+.subtitle {
+  font-size: 34px;
+}
+
+.body {
+  font-size: 21px;
+}
+
+.caption {
+  font-size: 13px;
+}
+
+$sizes: (
+  "xs": 0px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px
+);
+
+@each $name, $size in $sizes {
+  @media (min-width: $size) {
+    .title-#{$name} {
+      font-size: 55px;
+    }
+
+    .subtitle-#{$name} {
+      font-size: 34px;
+    }
+
+    .body-#{$name} {
+      font-size: 21px;
+    }
+
+    .caption-#{$name} {
+      font-size: 13px;
+    }
+
+    .bold-#{$name} {
+      font-family: Roboto-Bold, sans-serif;
+      font-weight: bold;
+    }
+
+    .light-#{$name} {
+      font-family: Roboto-Light, sans-serif;
+      font-weight: lighter;
+    }
+  }
+}

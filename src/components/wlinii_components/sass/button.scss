@@ -1,0 +1,64 @@
+@import "./_variables.scss";
+
+.btn {
+    position: relative;
+    margin: 20px 12px 0px 12px;
+    padding: 13px 26px;
+    font-size: 13px;
+    text-transform: uppercase;
+    overflow: hidden;
+    border: none;
+    outline: none !important;
+    cursor: pointer;
+    outline: none;
+    -moz-user-disabled: none;
+    -webkit-user-select: none;
+    user-select: none;
+    &.full-width {
+        width: 100%;
+        margin: 20px 0px 0px 0px;
+    }
+    &.dark {
+        color: white;
+    }
+    &.large {
+        padding: 20px 40px;
+        &.rounded {
+            border-radius: 40px;
+        }
+        &.outlined {
+            border-width: 4.5px;
+            padding: 16.5px 36.5px;
+        }
+    }
+    &.small {
+        padding: 8px 18px;
+        &.rounded {
+            border-radius: 16px;
+        }
+        &.outlined {
+            border-width: 1.5px;
+            padding: 7px 17px;
+        }
+    }
+    &.rounded {
+        border-radius: 26px;
+    }
+    &.outlined {
+        background-color: transparent;
+        border-width: 3px;
+        border-style: solid;
+        padding: 11px 24px;
+    }
+
+    &.icon {
+        margin: 0px 8px;
+        padding: 0px;
+        background-color: transparent !important;
+    }
+
+    &:disabled {
+        background-color: $default !important;
+        cursor: default !important;
+    }
+}

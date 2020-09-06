@@ -1,0 +1,159 @@
+@import "./_variables.scss";
+
+.nav-container {
+    margin-bottom: 160px;
+    .navbar {
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        position: fixed;
+        z-index: 9;
+        transition: ease 0.25s;
+        &.nav-hidden {
+            transition: ease 1s;
+            transform: translateY(-60px);
+        }
+        &.main-nav {
+            .top-bar {
+                background-color: transparent;
+                .nav-btn {
+                    color: white;
+                }
+            }
+            .bottom-bar {
+                background-color: transparent;
+                .nav-btn {
+                    color: white;
+                }
+            }
+            &.nav-hidden {
+                .bottom-bar {
+                    transition: ease 1s;
+                    background-color: white;
+                    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+                    .nav-btn {
+                        color: black;
+                    }
+                }
+            }
+        }
+        .top-bar,
+        .bottom-bar {
+            width: 100%;
+            padding: 0px 60px;
+        }
+
+        .top-bar {
+            height: 60px;
+            background-color: $primary;
+            .nav-btn {
+                height: 60px;
+                color: white;
+                &.disabled {
+                    color: white;
+                }
+            }
+            .nav-btn-icon {
+                height: 60px;
+            }
+        }
+        .bottom-bar {
+            height: 80px;
+            background-color: white;
+            .nav-btn,
+            .nav-btn-icon {
+                height: 80px;
+            }
+        }
+        .nav-btn,
+        .nav-btn-icon {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: auto;
+            float: left;
+            cursor: pointer;
+            -moz-user-disabled: none;
+            -webkit-user-select: none;
+            user-select: none;
+            &.disabled {
+                color: #757575;
+                cursor: default;
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+            &.active {
+                font-weight: bold;
+                color: $tertiary;
+            }
+        }
+        .nav-btn {
+            padding: 16px;
+            text-transform: uppercase;
+            .icon {
+                margin-right: 16px;
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.25);
+            }
+        }
+        .nav-btn-icon {
+            padding: 6px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .nav-container {
+        .navbar {
+            .top-bar,
+            .bottom-bar {
+                padding: 0px 15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        margin-bottom: 100px;
+        .navbar {
+            &.nav-hidden {
+                transform: translateY(0px);
+            }
+            &.main-nav {
+                &.nav-hidden {
+                    .top-bar {
+                        transition: ease 1s;
+                        background-color: white;
+                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+                        .nav-btn {
+                            color: white;
+                        }
+                    }
+                }
+            }
+            .top-bar,
+            .bottom-bar {
+                &.desktop-bar {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-container {
+        .navbar {
+            .top-bar,
+            .bottom-bar {
+                &.mobile-bar {
+                    display: none;
+                }
+            }
+        }
+    }
+}

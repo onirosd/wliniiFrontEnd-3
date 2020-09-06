@@ -1,0 +1,51 @@
+@import "./_variables.scss";
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-size: 100% 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  .carousel {
+    width: 75%;
+    margin: auto;
+    .carousel-item {
+      padding: 0px 21px;
+    }
+    .VueCarousel {
+      .VueCarousel-navigation {
+        button {
+          outline: none;
+        }
+      }
+      .VueCarousel-pagination {
+        .VueCarousel-dot-container {
+          .VueCarousel-dot {
+            width: 12px !important;
+            height: 12px !important;
+            padding: 7px !important;
+            background-color: black !important;
+            &.VueCarousel-dot--active {
+              background-color: $tertiary !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    background: none;
+    .carousel {
+      width: 100%;
+      .carousel-item {
+        width: 100%;
+        padding: 0 12px;
+        margin: auto;
+      }
+    }
+  }
+}
