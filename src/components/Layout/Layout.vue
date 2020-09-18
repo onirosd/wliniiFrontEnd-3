@@ -30,7 +30,7 @@
                                     <w-btn
                                         color="#41C541"
                                         :dark="true"
-                                        class="m-btn"
+                                        class="m-btn m-0"
                                         @click="contactWithWhatsApp('+51994641341')"
                                     >
                                         <div class="flex flex-row justify-center md:justify-between">

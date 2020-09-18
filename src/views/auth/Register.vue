@@ -50,7 +50,7 @@
                             <w-select
                                 label="TIPO"
                                 placeholder="Tipo"
-                                :options="['Empresa', 'Agente']"
+                                :options="['Agente', 'Empresa']"
                                 v-model="form.tipoempresa"
                             ></w-select>
 
@@ -99,7 +99,7 @@
                                     class="register-btn"
                                     :fullwidth="windowWidth <= 768"
                                     @click="registerUser"
-                                >REGSITRAR</w-btn>
+                                >REGISTRAR</w-btn>
                             </div>
                         </form>
                     </div>

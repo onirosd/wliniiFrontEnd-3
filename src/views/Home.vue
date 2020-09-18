@@ -112,7 +112,7 @@
         <div class="flex flex-row justify-between flex-wrap">
             <div class="w-3/3 md:w-1/3 home-item">
          <!--        <w-icon icon="house-man" h="130px"></w-icon> -->
-                <w-icon icon="house-graph" h="130px"></w-icon>
+                <w-icon icon="house-graph_1" h="130px"></w-icon>
                 <p class="body bold mt-5">Inventario compartido</p>
                 <p class="mt-5">
                     Encontrarás la mayor cantidad de agentes inmobiliarios que comparten comisiones y el inventario más grande de inmuebles compartidos
@@ -127,7 +127,7 @@
             </div>
             <div class="w-3/3 md:w-1/3 home-item">
               <!--   <w-icon icon="house-secure" h="130px"></w-icon> -->
-                <w-icon icon="building" h="130px"></w-icon>
+                <w-icon icon="building_1" h="130px"></w-icon>
                 <p class="body bold mt-5">Confiabilidad y experiencia</p>
                 <p class="mt-5">
                     Wlinii es una herramienta web hecha por agentes inmobiliarios para agentes inmobiliarios.
@@ -173,10 +173,10 @@
                             <p class="bold">{{ card.title }}</p>
                             <p>{{ card.body }}</p>
                             <div v-if="isManager">
-                                <p>Comisión</p>
+                                <!-- <p>Comisión</p> -->
                                 <div class="flex flex-row justify-between">
-                                    <p class="body bold">{{ card.comision }}</p>
-                                    <p class="body bold tertiary-text">{{ card.mes }}</p>
+                                    <div><p>Comisión</p><p class="body bold">{{ card.comision }}</p></div>
+                                    <div><p>Precio</p><p class="body bold tertiary-text">{{ card.mes }}</p></div>
                                 </div>
                             </div>
 
@@ -681,8 +681,9 @@ export default {
         },
         gotoInmuebles(type){
             if(type === 'featured'){
-                if( this.featuredCards.length ) this.$router.push({path: '/inmuebles', query: {featured: true}});
-                else return;
+                this.$router.push({path: '/inmuebles', query: {featured: true}});
+                // if( this.featuredCards.length ) this.$router.push({path: '/inmuebles', query: {featured: true}});
+                // else return;
             } else if(type === 'latest') this.$router.push({path: '/inmuebles', query: {latest: true}});
             else this.$router.push('/inmuebles');
         },
