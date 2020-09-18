@@ -25,8 +25,20 @@
                         <div class="flex flex-row justify-end">
                             <div class="custom-items-margin">
                                 <w-nav-btn :disabled="true">
-                                    <w-icon icon="phone-brown" h="17px"></w-icon>
-                                    <p class="caption bold white-text">+51 994641341</p>
+                                    <!-- <w-icon icon="phone-brown" h="17px"></w-icon> -->
+                                    <!-- <p class="caption bold white-text" @click="contactWithWhatsApp('+51994641341')">+51 994641341</p> -->
+                                    <w-btn
+                                        color="#41C541"
+                                        :dark="true"
+                                        class="m-btn"
+                                        @click="contactWithWhatsApp('+51994641341')"
+                                    >
+                                        <div class="flex flex-row justify-center md:justify-between">
+                                            <w-icon icon="whatsapp" h="21px" class="self-center mr-5"></w-icon>
+                                            <p class="self-center">WHATSAPP</p>
+                                        </div>
+                                    </w-btn>
+                                    
                                 </w-nav-btn>
                             </div>
                             <div class="custom-items-margin hidden lg:block">
@@ -92,7 +104,7 @@
                     <div class="flex-auto">
                         <div class="flex flex-row justify-end">
                             <div v-if="logged" class="mt-3">
-                                <UserLogged :notiCount="notiCount" :barIcon="barBtn" @drawerClick="drawer = !drawer"></UserLogged>
+                                <UserLogged :notiCount="notiCount" :barIcon="barBtn" @drawerclick="drawer = !drawer"></UserLogged>
                             </div>
                             <div v-else>
                                 <w-nav-btn
@@ -274,7 +286,10 @@ export default {
             }).catch(err => {
                 console.log('check notifications error', error);
             })
-        }
+        },
+        contactWithWhatsApp(phone){
+            window.open("https://api.whatsapp.com/send?phone=" + phone, '_blank');
+        },
     }
 };
 </script>

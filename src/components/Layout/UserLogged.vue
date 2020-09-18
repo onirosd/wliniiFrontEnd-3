@@ -74,7 +74,7 @@
                     </transition>
                 </div>
                 <div v-else style="align-self: center;">
-                    <w-btn :icon="true" @click="$emit('drawerClick')">
+                    <w-btn :icon="true" @click="$emit('drawerclick')">
                         <w-icon v-if="barIcon" :icon="barIcon" h="30px"></w-icon>
                     </w-btn>
                 </div>

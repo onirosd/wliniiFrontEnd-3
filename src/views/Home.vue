@@ -25,10 +25,10 @@
                             <h1 class="body bold white-text">Busqueda</h1>
                             <w-icon icon="map" h="17px"></w-icon>
                         </div>
-                        <p class="white-text mt-5 hidden md:block">
+                        <!-- <p class="white-text mt-5 hidden md:block">
                             Atención!! Se filtraran las propiedades en el mapa
                             automáticamente se elija la condición
-                        </p>
+                        </p> -->
                         {{provamos}}
                         <form class="mt-10" @submit.prevent>
                             <w-filterselect 
@@ -693,8 +693,13 @@ export default {
         gotoNoticiasDetail(noti){
             // if(!this.isManager) return;
             this.$router.push('/noticias/detalle/' + noti.idnoticias.trim());
-        }
+        },
+        contactWithWhatsApp(){
+            let owner = this.detail.owner;
+            if(!owner || !owner.Phone) return;
 
+            window.open("https://api.whatsapp.com/send?phone=" + owner.Phone, '_blank');
+        },
     }
 };
 </script>
