@@ -52,7 +52,7 @@ Vue.use(Router);
 
 export default new Router({
     mode: "history",
-    base: process.env.NODE_ENV === 'production' ? '/Front/' : '/',
+    // base: process.env.NODE_ENV === 'production' ? '/Front/' : '/',
     routes: [
         {
             path: "/",

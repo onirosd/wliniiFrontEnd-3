@@ -447,16 +447,7 @@ export default {
         featuredCards: [],
         latestCards: [],
         agents: [],
-        news: [
-            {
-                date: "2020-01-25",
-                image: "/images/departamentos/6.jpg",
-                title: "Curso introductorio a los indicadores de ventas",
-                body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio...",
-                fecpub : "",
-                idnoticias:0
-            }
-        ],
+        news: [],
         tipooperacion:{}
     }),
 
@@ -598,7 +589,7 @@ export default {
                 let _comision = this.defaultOptions.comision_types.find(c => c.IdTipoComision === p.IdTipoComision);
                 if(_comision){
                     if(_comision.Descripcion === "Monto") _comision = _curSymbol + parseFloat(p.Num_Comision);
-                    else _comision = parseFloat(p.Num_ComisionCompartir) + '%';
+                    else _comision = parseFloat(p.Num_Comision) + '%';
                 }else{
                     _comision = 0;
                 }

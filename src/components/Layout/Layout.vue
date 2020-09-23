@@ -154,7 +154,7 @@
             <br />
             <div class="w-full flex flex-row justify-center flex-wrap mobile-footer-content">
                 <div v-for="(route, i) in routes" :key="i">
-                    <w-btn @click="$router.push(route.path, () => {})" color="white">
+                    <w-btn @click="$router.push(route.path, () => {})" color="white mlr-0">
                         <p class="caption bold">{{ route.name }}</p>
                     </w-btn>
                 </div>
@@ -163,32 +163,37 @@
             <div class="w-full flex flex-row justify-center items-center flex-wrap">
                 <div class="custom-item-margin fix-footer-btn">
                     <w-btn color="white" :disabled="true">
-                        <div class="flex">
-                            <w-icon icon="phone-black" h="15px" class="custom-icon-margin"></w-icon>
-                            <p class="caption bold">+51 994641341</p>
-                        </div>
+                        <p class="caption">Términos y Condiciones</p>
                     </w-btn>
                 </div>
                 <div class="custom-item-margin fix-footer-btn">
                     <w-btn color="white" :disabled="true">
-                        <div class="flex">
-                            <w-icon icon="address" h="15px" class="custom-icon-margin"></w-icon>
-                            <p class="caption bold">Av. Javier Prado 1278 - San Isidro</p>
-                        </div>
+                        <p class="caption">Política de publicación</p>
                     </w-btn>
                 </div>
+                <div class="custom-item-margin fix-footer-btn">
+                    <w-btn color="white" :disabled="true">
+                        <p class="caption">Política de Privacidad</p>
+                    </w-btn>
+                </div>
+            </div>
+            <br>
+            <div class="w-full flex flex-row justify-center items-center flex-wrap">
                 <div class="fix-footer-btn social-btn">
                     <w-btn :icon="true">
-                        <w-icon icon="facebook-black" h="16px"></w-icon>
+                        <w-icon icon="facebook-black" h="26px"></w-icon>
                     </w-btn>
                     <w-btn :icon="true">
-                        <w-icon icon="instagram-black" h="16px"></w-icon>
+                        <w-icon icon="instagram-black" h="26px"></w-icon>
                     </w-btn>
                     <w-btn :icon="true">
-                        <w-icon icon="twitter-black" h="15px"></w-icon>
+                        <w-icon icon="twitter-black" h="25px"></w-icon>
                     </w-btn>
                     <w-btn :icon="true">
-                        <w-icon icon="youtube-black" h="13px"></w-icon>
+                        <w-icon icon="youtube-black" h="23px"></w-icon>
+                    </w-btn>
+                    <w-btn :icon="true">
+                        <w-icon icon="whatsapp-black" h="26px"></w-icon>
                     </w-btn>
                 </div>
             </div>
@@ -210,7 +215,6 @@ export default {
         drawer: false,
         notiCount: 0,
         routes: [
-            { name: "Planes", path: "/precios" },
             { name: "Alquiler", path: "/alquiler" },
             { name: "Venta", path: "/venta" },
             { name: "Nosotros", path: "/nosotros" },
@@ -319,8 +323,13 @@ export default {
         .mobile-footer-content {
             display: none;
         }
+        
     }
 
+    .mobile-footer-content .btn{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
     .fix-footer-btn {
         .btn {
             margin-top: 0px !important;
@@ -328,6 +337,10 @@ export default {
                 background-color: white !important;
             }
         }
+    }
+
+    .social-btn .btn.icon {
+        margin: 0 16px;
     }
 }
 </style>
