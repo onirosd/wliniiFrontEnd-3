@@ -1,5 +1,14 @@
 module.exports = {
     // ...
     // publicPath: process.env.NODE_ENV === 'production' ? '/Front/' : '/',
-    runtimeCompiler: true
+    publicPath: '/',
+    assetsDir: './',
+    runtimeCompiler: true,
+    css: {
+        loaderOptions: {
+           css: {
+              url: false,
+             }
+         }
+     }
 };
