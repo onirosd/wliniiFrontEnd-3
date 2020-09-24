@@ -39,7 +39,7 @@ Wlinii es el primer portal web para agentes inmobiliarios hecho por agentes inmo
 	
 </p>
 <!-- BANNER MERCADO -->
-            <div class="publi-banner mt-20" style="background-image: url('./images/banners/2.png')">
+            <div class="publi-banner mt-20" style="background-image: url('/images/banners/2.png')">
                 <div class="flex flex-row justify-center md:justify-end py-56">
                     <div class="flex flex-col justify-center items-center">
                 <!--         <w-icon icon="lock-transparent" h="217px" class="absolute"></w-icon> -->

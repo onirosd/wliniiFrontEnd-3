@@ -8,7 +8,7 @@
 
     -->
     <div class="register mb-20">
-        <div class="register-container" style="background-image: url('./images/banners/3.png')">
+        <div class="register-container" style="background-image: url('/images/banners/3.png')">
             <div class="responsive-register">
                 <p class="subtitle bold white-text ml-5">Registro</p>
                 <div class="divider ml-5 mt-1"></div>

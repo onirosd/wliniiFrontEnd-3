@@ -354,7 +354,7 @@
             </w-carousel>
 
             <!-- BANNER MERCADO -->
-            <div class="publi-banner mt-20" style="background-image: url('./images/banners/2.png')">
+            <div class="publi-banner mt-20" style="background-image: url('/images/banners/2.png')">
                 <div class="flex flex-row justify-center md:justify-end py-16">
                     <div class="flex flex-col justify-center items-center">
                         <w-icon icon="lock-transparent" h="217px" class="absolute"></w-icon>
@@ -783,12 +783,12 @@ export default {
     }
 
     .publi-banner {
-        // background-image: url("./images/banners/2.png");
+        // background-image: url("/images/banners/2.png");
         text-align: center;
     }
 
     // .graph-banner {
-    //     background-image: url("./images/banners/3.png");
+    //     background-image: url("/images/banners/3.png");
     // }
 
     .publi-banner,
