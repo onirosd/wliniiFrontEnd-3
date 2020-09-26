@@ -8,7 +8,7 @@
     <div v-scroll="handleScroll">
         <div class="logged">
             <div class="logged-container">
-                <div class="dropdown">
+                <div class="dropdown" v-click-outside="(e) => notiDrop = false">
                     <div class="notification-btn mr-3">
                         <w-btn :icon="true" @click="showNoti()">
                             <w-icon icon="notification" h="45px"></w-icon>
@@ -53,7 +53,7 @@
                 <div class="avatar mr-5" :style="`background-image: url(${avatar})`">
                     <!-- <img :src="avatar" /> -->
                 </div>
-                <div class="dropdown" v-if="windowWidth >= 768">
+                <div class="dropdown" v-if="windowWidth >= 768"   v-click-outside="(e) => drop = false">
                     <div class="drop-header" @click="drop = !drop">
                         {{userInfo.name}}
                         <div class="arrow"></div>
@@ -85,9 +85,10 @@
 
 <script>
 import anime from "animejs";
+import vClickOutside from 'v-click-outside';
 import { UserLogout } from "@/common/auth_apis";
 import { GetUnreadNotifications } from "@/common/notification_apis";
-import { SERVER_URL } from "@/common/config";
+import { SERVER_URL, Nav_Links } from "@/common/config";
 
 export default {
     data: () => ({
@@ -97,60 +98,14 @@ export default {
         intervalID: null,
         userInfo: {},
         windowWidth: window.innerWidth,
-        actions: [
-            {
-                name: "Perfil",
-                icon: "user",
-                path: "/agente",
-                type: ["1", "2"]
-            },
-            {
-                name: "Perfil Brocker",
-                icon: "user",
-                path: "/perfil/brocker",
-                type: ["3"]
-            },
-            {
-                name: "Editar perfil",
-                icon: "edit",
-                path: "/agente/perfil",
-                type: ["1", "2", "3"]
-            },
-            {
-                name: "Publicaciónes",
-                icon: "globe",
-                path: "/publicaciones",
-                type: ["3"]
-            },
-            {
-                name: "Publicación",
-                icon: "lock",
-                path: "/publicaciones/nueva",
-                type: ["1", "2"]
-            },
-            {
-                name: "Administrar",
-                icon: "globe",
-                path: "/publicaciones",
-                type: ["1", "2"]
-            },
-            {
-                name: "AMC",
-                icon: "database",
-                path: "/amc/1",
-                type: ["1", "2"]
-            },
-            {
-                name: "Cerrar Sesión",
-                icon: "logout",
-                type: null
-            }
-        ],
+        actions: Nav_Links,
         notifications: []
     }),
 
     props: ["barIcon", 'notiCount'],
-    
+    directives: {
+        clickOutside: vClickOutside.directive
+    },
     computed: {
         avatar(){
             if(this.userInfo && this.userInfo.avatar) return SERVER_URL + this.userInfo.avatar;
@@ -221,7 +176,7 @@ export default {
                 });
             });
             this.notiDrop = true;
-        }
+        },
     }
 };
 </script>

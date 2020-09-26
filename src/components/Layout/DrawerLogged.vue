@@ -11,18 +11,24 @@
                 <div class="drawer-content">
                     <div class="drawer-close" @click="activeDrawer = false">×</div>
                     <div class="avatar mb-2">
-                        <img src="/images/rostros/4.png" />
+                        <img :src="avatar" />
                     </div>
-                    <p class="text-center white-text">Hola Diego</p>
+                    <p class="text-center white-text">{{userInfo.name}}</p>
                     <div class="drawer-divider"></div>
-                    <w-btn
-                        v-for="(action, i) in actions"
-                        :key="i"
-                        @click="action.path ? surf(action.path) : logout()"
-                    >
+                    <!-- <w-btn v-for="(action, i) in actions" :key="i" @click="action.path ? surf(action.path) : logout()" >
                         <w-icon :icon="action.icon" h="15px"></w-icon>
                         {{ action.name }}
-                    </w-btn>
+                    </w-btn> -->
+
+                    <div v-for="(action, i) in actions" :key="i">
+                        <w-btn
+                            v-if="!action.type || action.type.includes(userInfo.type)"
+                            @click="action.path ? surf(action.path) : logout()"
+                        >
+                            <w-icon :icon="action.icon" h="15px"></w-icon>
+                            {{ action.name }}
+                        </w-btn>
+                    </div>
                 </div>
             </div>
         </transition>
@@ -31,35 +37,13 @@
 
 <script>
 import anime from "animejs";
+import { SERVER_URL, Nav_Links } from "@/common/config";
+import { UserLogout } from "@/common/auth_apis";
 
 export default {
     data: () => ({
-        actions: [
-            {
-                name: "Perfil",
-                icon: "user",
-                path: "/agente"
-            },
-            {
-                name: "Perfil Broker",
-                icon: "user",
-                path: "/perfil/brocker"
-            },
-            {
-                name: "Publicación",
-                icon: "edit",
-                path: "/publicaciones/nueva"
-            },
-            {
-                name: "AMC",
-                icon: "database",
-                path: "/amc/1"
-            },
-            {
-                name: "Cerrar Sesión",
-                icon: "logout"
-            }
-        ]
+        userInfo: {},
+        actions: Nav_Links
     }),
 
     props: {
@@ -75,9 +59,15 @@ export default {
             set(newValue) {
                 this.$emit("input", newValue);
             }
+        },
+        avatar(){
+            if(this.userInfo && this.userInfo.avatar) return SERVER_URL + this.userInfo.avatar;
+            else return '/images/dummy_user.jpg';
         }
     },
-
+    mounted() {
+        this.userInfo = this.$store.getters.user;
+    },
     methods: {
         enterDrawer() {
             let drawer = this.$refs.drawer;
@@ -95,7 +85,9 @@ export default {
         },
 
         logout() {
-            localStorage.setItem("logged", JSON.stringify(false));
+            UserLogout();
+            this.$router.push({path: '/'});
+            window.location.reload();
             this.activeDrawer = !this.activeDrawer;
         }
     }

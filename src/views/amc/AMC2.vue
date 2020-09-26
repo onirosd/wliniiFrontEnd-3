@@ -37,12 +37,12 @@
           >0{{step}} PASO</w-btn>
          
        
-         <div class="flex flex-row justify-between flex-wrap">
-          <div class="w-full md:w-1/2 p-5 md:pl-5 md:pr-2">
+         <div class="flex flex-row" style="align-items:center">
+          <div class="w-full p-5 md:pl-5 md:pr-2">
              <p v-if="step == 2" class="body subtitle-md bold ml-5">Agregar Oferta Pública</p>
               <p v-else class="body subtitle-md bold ml-5">Agregar Vendidos o Agregar Alquilados</p>
           </div>
-          <div class="flex flex-row justify-center align-center md:pr-2 md:justify-end md:mr-5">
+          <div class="flex flex-row justify-center md:pr-2 md:justify-end md:mr-5">
             
               <w-btn
               :dark="true"
@@ -75,7 +75,7 @@
           </div>
           <div class="w-full md:w-1/2 p-5 md:pr-5 md:pl-2">
             <div class="primary alert" style="cursor: pointer" @click="openManalFrom">
-              <p class="body bold white-text">Ingreso Manual ({{manualOffers.length}})</p>
+              <p class="caption body-md bold white-text">Ingreso Manual ({{manualOffers.length}})</p>
               <p class="white-text">Insertar datos para el cálculo</p>
             </div>
           </div>

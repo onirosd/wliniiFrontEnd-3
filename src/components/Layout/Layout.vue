@@ -30,6 +30,7 @@
                                     <w-btn
                                         color="#41C541"
                                         :dark="true"
+                                        :rounded="true"
                                         class="m-btn m-0"
                                         @click="contactWithWhatsApp('+51994641341')"
                                     >
@@ -83,12 +84,8 @@
                         <div class="flex flex-row justify-end">
                             <div v-for="(route, i) in routes" :key="i">
                                 <w-nav-btn
-                                    @click="$router.push(route.path, () => {})"
-                                    :class="
-                                        currentPath == route.path
-                                            ? 'active'
-                                            : ''
-                                    "
+                                    @click="gotoPage(route)"
+                                    :class="currentPath == route.path ? 'active' : ''"
                                 >{{ route.name }}</w-nav-btn>
                             </div>
                         </div>
@@ -215,8 +212,8 @@ export default {
         drawer: false,
         notiCount: 0,
         routes: [
-            { name: "Alquiler", path: "/alquiler" },
-            { name: "Venta", path: "/venta" },
+            { name: "Alquiler", path: "/inmuebles", param: {operacion: 'Alquiler'} },
+            { name: "Venta", path: "/inmuebles", param: {operacion: 'Venta'} },
             { name: "Nosotros", path: "/nosotros" },
             { name: "Contacto", path: "/contactanos" }
         ],
@@ -294,6 +291,10 @@ export default {
         contactWithWhatsApp(phone){
             window.open("https://api.whatsapp.com/send?phone=" + phone, '_blank');
         },
+        gotoPage(route){
+            if(route.param) this.$router.push({path: route.path, query: route.param});
+            else this.$router.push(route.path);
+        }
     }
 };
 </script>

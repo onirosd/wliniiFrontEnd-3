@@ -69,9 +69,9 @@
                             </div>
                         </div>
                         <div class="flex flex-row justify-center">
-                            <div class="w-full md:w-2/3 lg:w-1/2">
+                            <div class="w-full md:w-1/3">
                                 <div class="flex flex-row justify-between flex-wrap">
-                                    <div class="w-full md:w-1/2 px-2">
+                                    <!-- <div class="w-full md:w-1/2 px-2">
                                         <w-btn
                                             type="submit"
                                             :fullwidth="true"
@@ -80,8 +80,8 @@
                                             color="secondary"
                                             @click="saveConfig"
                                         >GUARDAR CAMBIOS</w-btn>
-                                    </div>
-                                    <div class="w-full md:w-1/2 px-2">
+                                    </div> -->
+                                    <div class="w-full px-2">
                                         <w-btn
                                             :fullwidth="true"
                                             :large="true"

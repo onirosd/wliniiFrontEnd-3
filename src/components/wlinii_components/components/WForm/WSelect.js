@@ -1,5 +1,7 @@
 import Vue from "vue";
 import anime from "animejs";
+import vClickOutside from 'v-click-outside';
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
 Vue.component("w-select", {
     data: () => ({
@@ -27,11 +29,12 @@ Vue.component("w-select", {
             type: Array,
             required: true
         },
-        rules: Array
+        rules: Array,
+        mxHeight: Number
     },
 
     template: `
-        <div class="input-container">
+        <div class="input-container" v-click-outside="onClickOutside">
           <div class="snackbar">
               <transition @enter="enterSnack">
                   <div class="snackbar-card" ref="snack" v-if="$slots.snackbar && activeSnack">
@@ -71,24 +74,33 @@ Vue.component("w-select", {
                 <w-icon v-if="afterIcon" :icon="afterIcon" class="after"></w-icon>
             </div>
             <transition @enter="enterOptions" @leave="leaveOptions">
+                
                 <div 
                     class="select-options" 
                     :class="tile ? 'tile' : ''" ref="selectOptions" 
                     :style="selectOptionsStyle"
                     v-if="showOptions"
                 >
-                    <div 
-                        class="opt" 
-                        v-for="(opt, i) in options" 
-                        :key="i" 
-                        @click="selectOption = opt; showOptions = !showOptions"
-                    >{{ opt }}</div>
+                    <VuePerfectScrollbar style="max-height: 300px">
+                        <div 
+                            class="opt" 
+                            v-for="(opt, i) in options" 
+                            :key="i" 
+                            @click="selectOption = opt; showOptions = !showOptions"
+                        >{{ opt }}</div>
+                    </VuePerfectScrollbar>
                 </div>
+                
             </transition>
             <div class="error-input">{{ errorMessage }}</div>
         </div>
     `,
-
+    directives: {
+        clickOutside: vClickOutside.directive
+    },
+    components: {
+        VuePerfectScrollbar
+    },
     watch: {
         'open'(newVal){
             this.showOptions = newVal;
@@ -160,6 +172,9 @@ Vue.component("w-select", {
     },
 
     methods: {
+        onClickOutside(e){
+            this.showOptions = false;
+        },
         setInputColor() {
             if (this.$wlinii[this.color]) {
                 return {
