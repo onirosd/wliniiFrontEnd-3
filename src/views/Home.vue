@@ -16,7 +16,7 @@
                 class="flex flex-row justify-center lg:justify-between flex-wrap lg:flex-no-wrap home-container"
             >
                 <div class="w-full md:w-2/3 lg:w-2/3 mb-10 lg:md-0 self-center">
-                    <h1 class="home-title bold white-text">La Herramienta Web de los Agentes Inmobiliarios</h1>
+                    <h1 class="home-title bold white-text">Encuentra Aquí la propiedad para tu Clíente</h1>
                 </div>
                 <div class="hidden lg:block w-1/3"></div>
                 <div class="w-full md:w-2/3 lg:w-2/3 self-center">

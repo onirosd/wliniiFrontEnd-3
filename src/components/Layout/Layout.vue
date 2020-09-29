@@ -32,7 +32,7 @@
                                         :dark="true"
                                         :rounded="true"
                                         class="m-btn m-0"
-                                        @click="contactWithWhatsApp('+51994641341')"
+                                        @click="openWindow('https://bit.ly/2ZJgJ0c')"
                                     >
                                         <div class="flex flex-row justify-center md:justify-between">
                                             <w-icon icon="whatsapp" h="21px" class="self-center mr-5"></w-icon>
@@ -43,10 +43,10 @@
                                 </w-nav-btn>
                             </div>
                             <div class="custom-items-margin hidden lg:block">
-                                <w-nav-btn icon="facebook-white" iconH="30px"></w-nav-btn>
-                                <w-nav-btn icon="instagram-white" iconH="30px"></w-nav-btn>
-                                <w-nav-btn icon="twitter-white" iconH="30px"></w-nav-btn>
-                                <w-nav-btn icon="youtube-white" iconH="30px"></w-nav-btn>
+                                <w-nav-btn icon="facebook-white" iconH="30px" @click="openWindow('https://www.facebook.com/WliniiAgentes')"></w-nav-btn>
+                                <w-nav-btn icon="instagram-white" iconH="30px" @click="openWindow('https://www.instagram.com/Wliniiperu')"></w-nav-btn>
+                                <w-nav-btn icon="twitter-white" iconH="30px" @click="openWindow('https://twitter.com/Wlinii')"></w-nav-btn>
+                                <w-nav-btn icon="youtube-white" iconH="30px" @click="openWindow('https://www.youtube.com/channel/UC_PB2P_smfXUSzgDuklfCLg?view_as=subscriber')"></w-nav-btn>
                             </div>
                             <div v-if="logged">
                                 <UserLogged :notiCount="notiCount"></UserLogged>
@@ -177,19 +177,19 @@
             <br>
             <div class="w-full flex flex-row justify-center items-center flex-wrap">
                 <div class="fix-footer-btn social-btn">
-                    <w-btn :icon="true">
-                        <w-icon icon="facebook-black" h="26px"></w-icon>
+                    <w-btn :icon="true" @click="openWindow('https://www.facebook.com/WliniiAgentes')">
+                        <w-icon icon="facebook-black" h="26px" ></w-icon>
                     </w-btn>
-                    <w-btn :icon="true">
+                    <w-btn :icon="true" @click="openWindow('https://www.instagram.com/Wliniiperu')">
                         <w-icon icon="instagram-black" h="26px"></w-icon>
                     </w-btn>
-                    <w-btn :icon="true">
+                    <w-btn :icon="true" @click="openWindow('https://twitter.com/Wlinii')">
                         <w-icon icon="twitter-black" h="25px"></w-icon>
                     </w-btn>
-                    <w-btn :icon="true">
+                    <w-btn :icon="true" @click="openWindow('https://www.youtube.com/channel/UC_PB2P_smfXUSzgDuklfCLg?view_as=subscriber')">
                         <w-icon icon="youtube-black" h="23px"></w-icon>
                     </w-btn>
-                    <w-btn :icon="true">
+                    <w-btn :icon="true" @click="openWindow('https://bit.ly/2ZJgJ0c')">
                         <w-icon icon="whatsapp-black" h="26px"></w-icon>
                     </w-btn>
                 </div>
@@ -294,6 +294,9 @@ export default {
         gotoPage(route){
             if(route.param) this.$router.push({path: route.path, query: route.param});
             else this.$router.push(route.path);
+        },
+        openWindow(link){
+            window.open(link, '_blank');
         }
     }
 };

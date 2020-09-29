@@ -16,8 +16,8 @@
                         v-for="(route, i) in routes"
                         :key="i"
                         :fullwidth="true"
-                        @click="surf(path)"
-                    >{{ route.label }}</w-btn>
+                        @click="gotoPage(route)"
+                    >{{ route.name }}</w-btn>
                 </div>
             </div>
         </transition>
@@ -30,30 +30,11 @@ import anime from "animejs";
 export default {
     data: () => ({
         routes: [
-            {
-                label: "Inicio",
-                path: "/"
-            },
-            {
-                label: "Precios",
-                path: "/precios"
-            },
-            {
-                label: "Alquiler",
-                path: "/"
-            },
-            {
-                label: "Venta",
-                path: "/"
-            },
-            {
-                label: "Nosotros",
-                path: "/"
-            },
-            {
-                label: "Contacto",
-                path: "/"
-            }
+            { name: "Inicio", path: "/" },
+            { name: "Alquiler", path: "/inmuebles", param: {operacion: 'Alquiler'} },
+            { name: "Venta", path: "/inmuebles", param: {operacion: 'Venta'} },
+            { name: "Nosotros", path: "/nosotros" },
+            { name: "Contacto", path: "/contactanos" }
         ]
     }),
 
@@ -87,6 +68,11 @@ export default {
         surf(path) {
             this.$router.push(path);
             this.activeDrawer = !this.activeDrawer;
+        },
+        gotoPage(route){
+            this.activeDrawer = !this.activeDrawer;
+            if(route.param) this.$router.push({path: route.path, query: route.param});
+            else this.$router.push(route.path);
         }
     }
 };
