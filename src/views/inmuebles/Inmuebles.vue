@@ -284,7 +284,7 @@ export default {
         let _comision = this.defaultOptions.comision_types.find(c => c.IdTipoComision === p.IdTipoComision);
         if(_comision){
           if(_comision.Descripcion === "Monto") _comision = _curSymbol+ parseFloat(p.Num_Comision);
-          else _comision = parseFloat(p.Num_ComisionCompartir) + '%';
+          else _comision = parseFloat(p.Num_Comision) + '%';
         }else{
           _comision = 0;
         }

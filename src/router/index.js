@@ -15,6 +15,10 @@ import Subscription from "../views/precios/Subscription";
 // NOSOTROS
 import Nosotros from "../views/nosotros/Nosotros.vue";
 
+import TerminoCondiciones from "../views/documentos/TerminoCondiciones.vue";
+import PoliticaPublicacion from "../views/documentos/PoliticaPublicacion.vue";
+import PoliticaPrivacidad from "../views/documentos/PoliticaPrivacidad.vue";
+
 // CONTACTANOS
 import Contactanos from "../views/contactanos/Contactanos.vue";
 
@@ -102,6 +106,33 @@ export default new Router({
             path: "/nosotros",
             name: "nosotros",
             component: Nosotros,
+            meta: {
+                auth: false
+            }
+        },
+
+        {
+            path: "/terminocondiciones",
+            name: "terminocondiciones",
+            component: TerminoCondiciones,
+            meta: {
+                auth: false
+            }
+        },
+
+        {
+            path: "/politicapublicacion",
+            name: "politicapublicacion",
+            component: PoliticaPublicacion,
+            meta: {
+                auth: false
+            }
+        },
+
+        {
+            path: "/politicaprivacidad",
+            name: "politicaprivacidad",
+            component: PoliticaPrivacidad,
             meta: {
                 auth: false
             }

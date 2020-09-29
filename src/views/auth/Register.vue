@@ -26,7 +26,7 @@
                                 <w-icon icon="info" h="24px"></w-icon>
                                 <template slot="content">
                                     <p class="bold">Importante!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit</p>
+                                    <p>Introducir el Código de registro que le fue asignado en el MVCS Ejm: 00117</p>
                                 </template>
                             </w-snackbar>
                         </div>
