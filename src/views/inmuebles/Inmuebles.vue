@@ -126,6 +126,7 @@
         </div>
       </div>
     </div>
+    <overlay-page-loader :loading="pageLoading"/>
     <br />
   </div>
 </template>
@@ -144,6 +145,7 @@ export default {
     page: 1,
     showFilters: false,
     windowWidth: window.innerWidth,
+    pageLoading: true,
     total: 0,
     countPerPage: 9,
     defaultOptions: null,
@@ -449,6 +451,7 @@ export default {
     },
 
     navigate(){
+      this.pageLoading = true;
       let reqParams = this.getReqParams();    
 
       GetInmuebles(reqParams).then(res => {
@@ -456,8 +459,10 @@ export default {
               this.initInmuebles(res.data.publications);
               this.total = res.data.total;
           }
+          this.pageLoading = false;
       }).catch(err => {
           console.log('publications...', err);
+          this.pageLoading = false;
       });
     },
 

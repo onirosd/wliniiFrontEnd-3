@@ -130,6 +130,7 @@
                 </div>
             </slide>
         </w-carousel>
+        <overlay-page-loader :loading="pageLoading"/>
         <br />
     </div>
 </template>
@@ -145,6 +146,7 @@ export default {
     data() {
         return {
             windowWidth: window.innerWidth,
+            pageLoading: true,
             defaultOptions: null,
             featuredCards: [],
             latestCards: [],
@@ -249,6 +251,8 @@ export default {
 
             if(type === 'featured') this.featuredCards = _pub;
             else if(type === 'latest') this.latestCards = _pub;
+
+            this.pageLoading = false;
         },
         gotoInmuebles(type){
             if(type === 'featured'){

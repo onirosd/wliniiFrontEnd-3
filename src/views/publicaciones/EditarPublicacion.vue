@@ -528,6 +528,7 @@
                 </w-card>
             </div>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -542,6 +543,7 @@ import { notify, editorToolbar } from "@/common/helpers";
 export default {
     data: () => ({
         windowWidth: window.innerWidth,
+        pageLoading: true,
         toolbarOptions: editorToolbar,
         sections: {
             inmueble: true,
@@ -677,10 +679,13 @@ export default {
 
             GetPublicationByID(this.publication_id).then(res => {
                 if(res && res.data) this.initPublicationData(res.data);
+                this.pageLoading = false;
             }).catch(err => {
+                this.pageLoading = false;
                 this.$router.push({path: '/'});
             });
         }).catch(err => {
+            this.pageLoading = false;
             console.log(err);
         });
     },

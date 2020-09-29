@@ -201,6 +201,7 @@
             </div>
         </div>
     </div>
+    <overlay-page-loader :loading="pageLoading"/>
   </div>
 </template>
 
@@ -216,6 +217,7 @@ import { currencySymbolByString, notify } from "@/common/helpers";
 export default {
   data() {
     return {
+      pageLoading: true,
       step: 2,
       showFilters: false,
       windowWidth: window.innerWidth,
@@ -589,6 +591,7 @@ export default {
     },
 
     filterPublications(){
+      this.pageLoading = true;
       let reqParams = this.getReqParams();      
       
       GetPublications(reqParams).then(res => {
@@ -596,8 +599,10 @@ export default {
               this.initPublications(res.data.publications);
               this.total = res.data.total;
           }
+          this.pageLoading = false;
       }).catch(err => {
           console.log('publications...', err);
+          this.pageLoading = false;
       });
     },
 

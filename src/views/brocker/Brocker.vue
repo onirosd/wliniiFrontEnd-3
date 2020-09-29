@@ -237,6 +237,7 @@
             </w-card>
             <br />
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -248,6 +249,7 @@ import { notify } from "@/common/helpers";
 export default {
     data() {
         return {
+            pageLoading: true,
             page: 1,
             totalpage: 1,
             perPage: 10,
@@ -281,8 +283,10 @@ export default {
 
         GetBrokerProfile().then(res => {
             if(res) this.initCompanyInfo(res.data);
+            this.pageLoading = false;
         }).catch(err => {
             console.log('Broker profile error', err);
+            this.pageLoading = false;
         });
 
         this.page = 1;

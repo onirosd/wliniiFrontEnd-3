@@ -113,6 +113,7 @@
                 </div>
             </w-card>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -124,6 +125,7 @@ import { SERVER_URL } from "@/common/config";
 
 export default {
     data: () => ({
+        pageLoading: true,
         page: 1,
         perPage: 10,
         total: 0,
@@ -142,6 +144,7 @@ export default {
     },
     methods: {
         navigate(){
+            this.pageLoading = true;
             let param = {
                 page: this.page,
                 count: this.perPage
@@ -149,8 +152,10 @@ export default {
 
             GetNotifications({page: this.page, count: this.perPage}).then(res => {
                 if(res) this.initNotifications(res.data);
+                this.pageLoading = false;
             }).catch(err => {
                 console.log('get notifications error', err);
+                this.pageLoading = false;
             });
         },
         initNotifications(data){

@@ -168,6 +168,7 @@
                 </div>
             </w-card>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -178,6 +179,7 @@ import { CheckUserSubscription } from "@/common/subscription_apis";
 
 export default {
     data: () => ({
+        pageLoading: false,
         offerList: [],
         soldList: [],
         offerResult: {},
@@ -285,6 +287,7 @@ export default {
             }
         },
         generatePDF(){
+            this.pageLoading = true;
             let payload = {
                 observacion : this.form.observaciones,
                 finalPrice: this.finalPrice_200,
@@ -305,8 +308,10 @@ export default {
                 document.body.appendChild(link);
                 link.click();
                 // window.open(_url, '_blank');
+                this.pageLoading = false;
                 notify('success', null, 'El documento fue descargado exitosamente');
             }).catch(err => {
+                this.pageLoading = false;
                 notify('error', null, 'Error de generación de PDF');
             })
         },

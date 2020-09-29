@@ -47,6 +47,7 @@
                 </div>
             </div>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
         <br />
     </div>
 </template>
@@ -63,6 +64,7 @@ export default {
     data: () => ({
         showFilters: false,
         windowWidth: window.innerWidth,
+        pageLoading: true,
         publications: [],
         defaultOptions: null,
         center: { lat: -12.1122095, lng: -77.047945 },
@@ -370,6 +372,7 @@ export default {
             return reqParams;
         },
         navigate(){
+            this.pageLoading = true;
             let token = this.$store.getters.token;
             let reqParams = this.getReqParams();      
 
@@ -378,8 +381,10 @@ export default {
                     this.initPublications(res.data.publications);
                     this.total = res.data.total;
                 }
+                this.pageLoading = false;
             }).catch(err => {
                 console.log('publications...', err);
+                this.pageLoading = false;
             });
         }
     },

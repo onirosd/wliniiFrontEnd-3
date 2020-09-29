@@ -225,6 +225,7 @@
             </w-card>
             <br />
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -241,7 +242,7 @@ export default {
         perfilImage: null,
         windowWidth: window.innerWidth,
         countries: [],
-        submitting: false,
+        pageLoading: true,
         form: {},
         authForm: {},
         paisName: null
@@ -273,9 +274,12 @@ export default {
             
             PersonalAPI().then(res => {
                 if(res) this.initPersonaInfo(res.data);
+                this.pageLoading = false;
             }).catch(err => {
                 console.log('get Person info', err);
+                this.pageLoading = false;
             });
+            
         });
     },
     methods: {
@@ -286,24 +290,24 @@ export default {
             this.form = data;
         },
         changePassword(){
-            if(this.submitting) return;
-            this.submitting = true;
+            if(this.pageLoading) return;
+            this.pageLoading = true;
 
             ChangePassword(this.authForm).then(res => {
-                this.submitting = false;
+                this.pageLoading = false;
                 if(res && res.data.status === 'success') {
                     notify('success', null, 'Contraseña cambiada');
                     UserLogout();
                     this.$router.push('/login');
                 }
             }).catch(err => {
-                this.submitting = false;
+                this.pageLoading = false;
                 notify('error', null, 'Solicitud fallida');
             });
         },
         updatePersonInfo(){
-            if(this.submitting) return;
-            this.submitting = true;
+            if(this.pageLoading) return;
+            this.pageLoading = true;
 
             let _pais = this.countries.find(c => c.Des_Pais == this.paisName);
 
@@ -314,10 +318,10 @@ export default {
             
             let UpdatePersonAPI = this.isManager ? UpdatePersonaInfo : UpdateBrokerPersonaInfo;
             UpdatePersonAPI(payload).then(res => {
-                this.submitting = false;
+                this.pageLoading = false;
                 if(res) notify('success', null, 'Perfil actualizado con éxito');
             }).catch(err => {
-                this.submitting = false;
+                this.pageLoading = false;
                 notify('error', null, 'Actualización de perfil fallida');
             });
         },

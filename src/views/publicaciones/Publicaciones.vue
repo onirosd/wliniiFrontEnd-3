@@ -262,6 +262,7 @@
         </div>
       </div>
     </div>
+    <overlay-page-loader :loading="pageLoading"/>
     <br />
   </div>
 </template>
@@ -277,6 +278,7 @@ import { currencySymbol, notify } from "@/common/helpers";
 export default {
   data() {
     return {
+      pageLoading: true,
       openedSelct: '',
       isManager: false,
       page: 1,
@@ -627,6 +629,7 @@ export default {
     },
 
     navigate(){
+      this.pageLoading = true;
       let reqParams = this.getReqParams();      
       let PublicationAPI = this.isManager ? GetPublications : GetPublicationsByBroker;
       
@@ -635,8 +638,10 @@ export default {
               this.initPublications(res.data.publications);
               this.total = res.data.total;
           }
+          this.pageLoading = false;
       }).catch(err => {
           console.log('publications...', err);
+          this.pageLoading = false;
       });
     },
 

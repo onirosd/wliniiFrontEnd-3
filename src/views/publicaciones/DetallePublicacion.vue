@@ -311,6 +311,7 @@
                 </div>
             </div>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -326,6 +327,7 @@ import { currencySymbol, notify } from "@/common/helpers";
 export default {
     data: () => ({
         windowWidth: window.innerWidth,
+        pageLoading: true,
         activeMedia: {
             type: "",
             url: null
@@ -411,17 +413,20 @@ export default {
                 this.inmuebletipos = res.data.inmueble_types;
                 this.comisionTypes = res.data.comision_types;
             }
-        GetPublicationDetailByID(this.publication_id).then(res => {
+            GetPublicationDetailByID(this.publication_id).then(res => {
                 if(res && res.data){
                     this.detail = res.data;
                     this.initDetail();
                     this.initProperties();
                     this.isLoaded = true;
                 }
+                this.pageLoading = false;
             }).catch(err => {
+                this.pageLoading = false;
                 console.log('publication options...', err);
             });
         }).catch(err => {
+            this.pageLoading = false;
             console.log(err);
         });
     },

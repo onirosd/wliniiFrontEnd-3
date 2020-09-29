@@ -546,6 +546,7 @@
                 </w-card>
             </div>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -560,6 +561,7 @@ import { notify, editorToolbar } from "@/common/helpers";
 export default {
     data: () => ({
         windowWidth: window.innerWidth,
+        pageLoading: false,
         toolbarOptions: editorToolbar,
         veremos : "",
         sections: {
@@ -593,7 +595,6 @@ export default {
             comision: "Porcentaje"
         },
         selectVideo: false,
-        submitting: false,
         coordenadas: null,
         verDireccion: "",
         operaciontipos: [],
@@ -823,8 +824,8 @@ export default {
         },
 
         submitNewPublication() {
-            if(this.submitting) return;
-            this.submitting = true;
+            if(this.pageLoading) return;
+            this.pageLoading = true;
 
             let operationType, inmuebleType, location, moneda, comision;
             if(this.tmpdata.tipooperacion) operationType = this.operaciontipos.find(e => e.Descripcion === this.tmpdata.tipooperacion);
@@ -851,15 +852,15 @@ export default {
 
             CreatePublication(this.form).then(res => {
                 if(res && res.data) {
-                    this.submitting = false;
+                    this.pageLoading = false;
                     this.uploadImages(res.data.id);
                     notify('success', null, 'Publicación creada exitosamente');
                 } else {
-                    this.submitting = false;
+                    this.pageLoading = false;
                     notify('error', null, 'Creación de publicación fallida');
                 }
             }).catch(err => {
-                this.submitting = false;
+                this.pageLoading = false;
                 notify('error', null, 'Creación de publicación fallida');
             });
         },
@@ -867,7 +868,7 @@ export default {
         uploadImages(id){
             const files = this.$refs["photoFile"].files;
             if(!files.length) {
-                this.submitting = false;
+                this.pageLoading = false;
                 this.gotoPublications();
                 return;
             }
@@ -880,11 +881,11 @@ export default {
             }
 
             UploadImages(formData).then(res => {
-                this.submitting = false;
+                this.pageLoading = false;
                 if(res && res.data) this.gotoPublications();
                 else console.log('image upload error');
             }).catch(err => {
-                this.submitting = false;
+                this.pageLoading = false;
                 console.log('publication options...', err.response);
             });
         },

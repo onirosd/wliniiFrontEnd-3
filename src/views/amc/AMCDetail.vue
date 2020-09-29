@@ -210,6 +210,7 @@
                 ></mapas>
             </w-card>
         </div>
+        <overlay-page-loader :loading="pageLoading"/>
     </div>
 </template>
 
@@ -223,6 +224,7 @@ import { currencySymbol } from "@/common/helpers";
 export default {
     data: () => ({
         windowWidth: window.innerWidth,
+        pageLoading: true,
         activeMedia: {
             type: "",
             url: null
@@ -303,11 +305,14 @@ export default {
                     this.initProperties();
                     this.isLoaded = true;
                 }
+                this.pageLoading = false;
             }).catch(err => {
                 console.log('publication options...', err);
+                this.pageLoading = false;
             });
         }).catch(err => {
             console.log(err);
+            this.pageLoading = false;
         });
     },
     mounted() {
