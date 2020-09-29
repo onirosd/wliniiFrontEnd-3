@@ -8,7 +8,9 @@ import "./components/wlinii_components";
 import "./css/main.css";
 import VueYouTubeEmbed from 'vue-youtube-embed';
 import AspectRatio from "v-aspect-ratio";
-import Notifications from 'vue-notification'
+import Notifications from 'vue-notification';
+import "./components/OverlayLoader/OverlayPageLoader";
+import "./components/OverlayLoader/OverlayPageLoader.css";
 
 import Moment from 'moment';
 Moment.locale('es');

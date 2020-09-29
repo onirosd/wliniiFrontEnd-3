@@ -421,12 +421,13 @@
                 </div>
             </div>
         </div>
+        <overlay-page-loader :loading="loading"/>
     </div>
 </template>
 
 <script>
 import moment from "moment";
-import { currencySymbol } from "@/common/helpers";
+import { currencySymbol, setLoading, hideLoading } from "@/common/helpers";
 import { GetGeneralOptions, GetNews, TestRequest } from "@/common/home_apis";
 import { GetFeaturedInmuebles, GetLatestInmuebles } from "@/common/inmueble_apis";
 import { GetResumenAgentes } from "@/common/agente_apis";
@@ -448,7 +449,8 @@ export default {
         latestCards: [],
         agents: [],
         news: [],
-        tipooperacion:{}
+        tipooperacion:{},
+        loading: true
     }),
 
     computed: {
@@ -480,7 +482,6 @@ export default {
             }
         }
     },
-
     mounted() {
         window.addEventListener("resize", () => {
             this.windowWidth = window.innerWidth;
@@ -501,6 +502,7 @@ export default {
         GetGeneralOptions().then(res => {
             if(res) this.initOptions(res.data);
             this.tipooperacion = res.data;
+            this.loading = false;
 
             GetFeaturedInmuebles().then(res => {
                 if(res) this.initInmuebles(res.data, 'featured');
