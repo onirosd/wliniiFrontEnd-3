@@ -11,7 +11,7 @@
             <w-top-bar class="desktop-bar">
                 <div class="flex flex-row justify-between">
                     <div>
-                        <w-nav-btn :disabled="true">
+                     <!--    <w-nav-btn :disabled="true">
                             <w-icon icon="flag" h="17px"></w-icon>
                             <p class="caption bold white-text">ENG</p>
                         </w-nav-btn>
@@ -19,7 +19,7 @@
                             <w-icon icon="globe" h="17px"></w-icon>
                             <p class="caption bold white-text">ESP</p>
 
-                        </w-nav-btn>
+                        </w-nav-btn> -->
                     </div>
                     <div class="flex-1">
                         <div class="flex flex-row justify-end">
@@ -159,17 +159,17 @@
             <br />
             <div class="w-full flex flex-row justify-center items-center flex-wrap">
                 <div class="custom-item-margin fix-footer-btn">
-                    <w-btn color="white" :disabled="true">
+                    <w-btn color="white" @click="$router.push('/terminocondiciones', () => {})">
                         <p class="caption">Términos y Condiciones</p>
                     </w-btn>
                 </div>
                 <div class="custom-item-margin fix-footer-btn">
-                    <w-btn color="white" :disabled="true">
+                    <w-btn color="white" @click="$router.push('/politicapublicacion', () => {})">
                         <p class="caption">Política de publicación</p>
                     </w-btn>
                 </div>
                 <div class="custom-item-margin fix-footer-btn">
-                    <w-btn color="white" :disabled="true">
+                    <w-btn color="white" @click="$router.push('/politicaprivacidad', () => {})">
                         <p class="caption">Política de Privacidad</p>
                     </w-btn>
                 </div>

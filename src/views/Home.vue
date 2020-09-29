@@ -232,11 +232,14 @@
                             <p class="bold">{{ card.title }}</p>
                             <p>{{ card.body }}</p>
                             <div v-if="isManager">
-                                <p>Comisión</p>
+                              
+
+                           
                                 <div class="flex flex-row justify-between">
-                                    <p class="body bold">{{ card.comision }}</p>
-                                    <p class="body bold tertiary-text">{{ card.mes }}</p>
+                                    <div><p>Comisión</p><p class="body bold">{{ card.comision }}</p></div>
+                                    <div><p>Precio</p><p class="body bold tertiary-text">{{ card.mes }}</p></div>
                                 </div>
+
                             </div>
 
                             <template v-if="isManager" slot="footer">
