@@ -45,7 +45,7 @@
                         <div class="moneda-alert"><strong>Importante! </strong> Moneda Elegida: {{selectedCur}}</div>
                     </div>
                     <div class="w-full md:w-1/2 self-center flex flex-row justify-end">
-                        <w-btn :dark="true" :rounded="true" color="primary" @click="$router.push('/amc/2')">Volver a Análisis AMC</w-btn>
+                        <w-btn :dark="true" :rounded="true" color="primary" @click="backToAMC">Volver a Análisis AMC</w-btn>
                     </div>
                 </div>
                 <div class="hidden md:block">
@@ -432,6 +432,20 @@ export default {
                 id = matched.pop().replace('?rel=0','');
             }
             return id;
+        },
+
+        backToAMC(){
+            let saved_state = localStorage.getItem('AMC_TMP');
+            if(saved_state){
+                try{
+                    saved_state = JSON.parse(saved_state);
+
+                    this.step = saved_state.step;
+                    this.$router.push('/amc/' + this.step);
+                }catch(err){
+                    console.log('back failed');
+                }
+            }
         }
     }
 };

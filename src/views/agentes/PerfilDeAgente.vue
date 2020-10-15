@@ -157,8 +157,8 @@
                         <w-input
                             label="instagram"
                             placeholder="https://www.instagram.com/messages"
+                            v-model="form.Des_Rs_Instagram"
                         ></w-input>
-                        <!-- v-model="form.instagram" -->
                     </div>
                     <div class="w-full lg:w-2/3 md:w-2/3">
                         <w-input

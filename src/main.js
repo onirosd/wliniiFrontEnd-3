@@ -51,13 +51,18 @@ new Vue({
             return response;
         }, function (error) {
             if (401 === error.response.status) {
-                let message = error.response.data.error;
+                let _command = error.response.data; 
                 Vue.notify({
                     group: 'w-notify',
                     type: 'error',
                     title: 'Autenticación',
-                    text: message ? message : 'usted no está autorizado. Por favor, inicie sesión o regístrese.'
+                    text: _command.error ? _command.error : 'usted no está autorizado. Por favor, inicie sesión o regístrese.'
                 });
+
+                if(_command.function == 'logout') {
+                    store.dispatch('clear');
+                    localStorage.setItem("logged", JSON.stringify(false));
+                }
 
                 let redirectUrl = error.response.data.redirect;
                 if(redirectUrl) router.push(redirectUrl);

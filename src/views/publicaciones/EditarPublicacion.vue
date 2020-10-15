@@ -428,7 +428,7 @@
                                 Videos
                                 <span
                                     class="caption black-text"
-                                >({{ resource.videos.length }} de 3 disponibles)</span>
+                                >({{ videoCount }} de 3 disponibles)</span>
                             </div>
 
                             <div class="w-full">
@@ -513,7 +513,7 @@
                             <div class="flex flex-row justify-center">
                                 <div class="w-full md:w-1/2 px-2 mt-10 mb-20">
                                     <p class="text-center">
-                                        Si ha completadp todos los campos y está
+                                        Si ha completado todos los campos y está
                                         seguro de la exactitud de toda la
                                         información, haga clic en el botón a
                                         continuación para guardar los datos
@@ -646,6 +646,13 @@ export default {
             if(!this.comisiontipos.length) return [];
             let _options = this.comisiontipos.map(o => o.Descripcion);
             return _options;
+        },
+        videoCount: function(){
+            let _count = 0;
+            if(this.form.Des_LinkVideo1) _count += 1;
+            if(this.form.Des_LinkVideo2) _count += 1;
+            if(this.form.Des_LinkVideo3) _count += 1;
+            return _count;
         }
     },
 

@@ -45,7 +45,8 @@ export default {
         handleChangedValue(){
             if(this.disabled) return;
 
-            if(!this.selectedOption || !this.range.from || !this.range.to || this.range.from > this.range.to) return;
+            console.log(this.range);
+            if(!this.selectedOption || !this.range.from || !this.range.to || Number(this.range.from) > Number(this.range.to)) return;
             this.$emit('changeRange', {option: this.selectedOption, ...this.range});
         },
         updateState(val){

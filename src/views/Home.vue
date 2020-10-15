@@ -74,31 +74,33 @@
                     </w-card>
                 </div>
             </div>
-            <div class="parallax-tag">
-                <div
-                    class="flex flex-row justify-center md:justify-start flex-wrap lg:flex-no-wrap"
-                >
-                    <div class="w-2/2 lg:w-2/3 flex flex-row justify-center md:justify-start">
-                        <w-icon icon="lock" h="45px" class="hidden md:block mt-3 mr-5"></w-icon>
-                        <div>
-                            <p
-                                class="body subtitle-md light white-text text-center md:text-left"
+            <div class="parallax-tag-wrapper">
+                <div class="parallax-tag">
+                    <div
+                        class="flex flex-row justify-center md:justify-start flex-wrap lg:flex-no-wrap"
+                    >
+                        <div class="w-2/2 lg:w-2/3 flex flex-row justify-center md:justify-start">
+                            <w-icon icon="lock" h="45px" class="hidden md:block mt-3 mr-5"></w-icon>
+                            <div>
+                                <p
+                                    class="body subtitle-md light white-text text-center md:text-left"
 
-                            >¿ Eres Agente Inmobiliario ?</p>
-                            <p
-                                class="body tertiary-text text-center md:text-left"
-                            >solicíta tu cuenta en pocos minutos</p>
+                                >¿ Eres Agente Inmobiliario ?</p>
+                                <p
+                                    class="body tertiary-text text-center md:text-left"
+                                >solicíta tu cuenta en pocos minutos</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="hidden md:block md:w-1/3"></div>
-                    <div v-if="!isLogged" class="w-full md:w-1/3 mb-2 flex flex-row justify-center">
-                        <w-btn
-                            color="secondary"
-                            :dark="true"
-                            :fullwidth="true"
-                            style="max-height: 56px !important;"
-                            @click="$router.push('/register')"
-                        >REGISTRA TU CUENTA AHORA</w-btn>
+                        <div class="hidden md:block md:w-1/3"></div>
+                        <div v-if="!isLogged" class="w-full md:w-1/3 mb-2 flex flex-row justify-center">
+                            <w-btn
+                                color="secondary"
+                                :dark="true"
+                                :fullwidth="true"
+                                style="max-height: 56px !important;"
+                                @click="$router.push('/register')"
+                            >REGISTRA TU CUENTA AHORA</w-btn>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -458,11 +460,15 @@ export default {
 
     computed: {
         parallaxHeight() {
-            if (this.windowWidth >= 768) {
-                return this.windowWidth <= 1024 ? "150" : "140";
-            } else {
-                return "130";
-            }
+            if(this.windowWidth >= 1024) return "800px";
+            else if(this.windowWidth >= 768) return "1000px";
+            else if(this.windowWidth >= 350) return "860px";
+            else return "1000px";
+            // if (this.windowWidth >= 768) {
+            //     return this.windowWidth <= 1024 ? "1000px" : "800px";
+            // } else {
+            //     return "860px";
+            // }
         },
 
         carrouselItems() {
@@ -734,10 +740,15 @@ export default {
             }
         }
     }
-
+    .parallax-tag-wrapper {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
     .parallax-tag {
         position: absolute;
-        bottom: -86px;
+        top: -80px;
+        // bottom: -86px;
         left: 5%;
         width: 90%;
         background-color: $primary;
@@ -817,11 +828,11 @@ export default {
         }
     }
 
-    .parallax-tag {
-        bottom: -216px !important;
-        width: 95% !important;
-        left: 2.5% !important;
-    }
+    // .parallax-tag {
+    //     bottom: -216px !important;
+    //     width: 95% !important;
+    //     left: 2.5% !important;
+    // }
 
     .home-fix {
         margin-bottom: 250px !important;
@@ -853,12 +864,12 @@ export default {
         padding-left: 12px !important;
     }
 
-    .parallax-tag {
-        bottom: -190px !important;
-        left: 0 !important;
-        width: 100% !important;
-        border-top: none !important;
-    }
+    // .parallax-tag {
+    //     bottom: -190px !important;
+    //     left: 0 !important;
+    //     width: 100% !important;
+    //     border-top: none !important;
+    // }
 
     .home-fix {
         margin-bottom: 300px !important;

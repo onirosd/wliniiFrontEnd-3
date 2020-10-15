@@ -307,65 +307,65 @@ export default {
         },
         {
           state: false,
-          name: "Tipo de Operación",
+          name: "PUBLICACIONES",
           options: [],
           toggle: true,
           selectOption: null
         },
-        {
-          state: false,
-          name: "Tipo de inmueble",
-          options: [],
-          toggle: true,
-          selectOption: null
-        },
-        {
-          state: false,
-          name: "Fecha de Publicación",
-          type: null,
-          toggle: true,
-          options: ["Desde Ayer", "Hoy", "Última Semana", "Últimos 15 Días", "Últimos 30 Días", "Últimos 45 Días"],
-          selectOption: null
-        },
-        {
-          state: false,
-          name: "Dormitorios",
-          type: "row",
-          options: ["1", "2", "3", "4", ">5"],
-          selectOption: null
-        },
-        {
-          state: false,
-          name: "Baños",
-          type: "row",
-          options: ["1", "2", "3", "4", ">5"],
-          selectOption: null
-        },
-        {
-          state: false,
-          name: "Estacionamientos",
-          type: "row",
-          options: ["1", "2", "3", "4", ">5"],
-          selectOption: null
-        },
-        {
-          state: false,
-          name: "Superficie",
-          type: "selection-range",
-          toggle: true,
-          options: ["Techada", "Total"],
-          selectOption: null,
-          range: []
-        },
-        {
-          state: false,
-          name: "Precio",
-          type: "selection-range",
-          toggle: true,
-          options: ["Soles", "Dolares", "Euros"],
-          selectOption: null,
-          range: []
-        }
+        // {
+        //   state: false,
+        //   name: "Tipo de inmueble",
+        //   options: [],
+        //   toggle: true,
+        //   selectOption: null
+        // },
+        // {
+        //   state: false,
+        //   name: "Fecha de Publicación",
+        //   type: null,
+        //   toggle: true,
+        //   options: ["Desde Ayer", "Hoy", "Última Semana", "Últimos 15 Días", "Últimos 30 Días", "Últimos 45 Días"],
+        //   selectOption: null
+        // },
+        // {
+        //   state: false,
+        //   name: "Dormitorios",
+        //   type: "row",
+        //   options: ["1", "2", "3", "4", ">5"],
+        //   selectOption: null
+        // },
+        // {
+        //   state: false,
+        //   name: "Baños",
+        //   type: "row",
+        //   options: ["1", "2", "3", "4", ">5"],
+        //   selectOption: null
+        // },
+        // {
+        //   state: false,
+        //   name: "Estacionamientos",
+        //   type: "row",
+        //   options: ["1", "2", "3", "4", ">5"],
+        //   selectOption: null
+        // },
+        // {
+        //   state: false,
+        //   name: "Superficie",
+        //   type: "selection-range",
+        //   toggle: true,
+        //   options: ["Techada", "Total"],
+        //   selectOption: null,
+        //   range: []
+        // },
+        // {
+        //   state: false,
+        //   name: "Precio",
+        //   type: "selection-range",
+        //   toggle: true,
+        //   options: ["Soles", "Dolares", "Euros"],
+        //   selectOption: null,
+        //   range: []
+        // }
       ]
     };
   },
@@ -469,7 +469,7 @@ export default {
           _comision = 0;
         }
 
-        let _state = this.defaultOptions.pub_states.find(s => s.Id_EstadoPublicacion === p.detail[0].Id_EstadoPublicacion);
+        let _state = this.defaultOptions.pub_states.find(s => s.Id_EstadoPublicacion === p.Id_EstadoPublicacion);
         _state = _state.Descripcion;
 
         
@@ -490,7 +490,12 @@ export default {
           image_url: p.images.length ? SERVER_URL + p.images[0].Des_url : 'images/dummy.jpg',
           showForm: false,
           form: {},
-          detail: p.detail.length ? p.detail[0] : null,
+          detail: {
+            Id_EstadoPublicacion: p.Id_EstadoPublicacion,
+            IdUsuarioCompartido: p.IdUsuarioCompartido,
+            IdTipoMoneda: p.Detail_Moneda,
+            NumPrecioVenta: p.NumPrecioVenta
+          },
           disabledForm: (_state === "Vendido/Alquilado" ||  _state === "Cancelada") ? true : false
         });
       })
@@ -513,29 +518,29 @@ export default {
         selectOption: null
       });
 
-      let operaciones = options.operation_types;
-      let operationList = [];
-      operaciones.map(o => { operationList.push(o.Descripcion); });
+      let states = options.pub_states;
+      let stateList = [];
+      states.map(o => { stateList.push(o.Descripcion); });
       _panels.push({
         state: false,
-        name: "Tipo de Operación",
+        name: "PUBLICACIONES",
         type: null,
         toggle: true,
-        options: operationList,
+        options: stateList,
         selectOption: null
       });
 
-      let inmuebles = options.inmueble_types;
-      let inmuebleList = [];
-      inmuebles.map(i => { inmuebleList.push(i.Descripcion); });
-      _panels.push({
-        state: false,
-        name: "Tipo de inmueble",
-        type: null,
-        toggle: true,
-        options: inmuebleList,
-        selectOption: null
-      });
+      // let inmuebles = options.inmueble_types;
+      // let inmuebleList = [];
+      // inmuebles.map(i => { inmuebleList.push(i.Descripcion); });
+      // _panels.push({
+      //   state: false,
+      //   name: "Tipo de inmueble",
+      //   type: null,
+      //   toggle: true,
+      //   options: inmuebleList,
+      //   selectOption: null
+      // });
 
       this.panels = [..._panels, ...this.panels.slice(3)];
     },
@@ -567,54 +572,54 @@ export default {
       }
       
       if(this.panels[1].selectOption){
-        let operation = this.defaultOptions.operation_types.find(o => o.Descripcion === this.panels[1].selectOption);
-        reqParams['IdTipoOperacion']=operation.IdTipoOperacion;
+        let state = this.defaultOptions.pub_states.find(o => o.Descripcion === this.panels[1].selectOption);
+        reqParams['Id_EstadoPublicacion']=state.Id_EstadoPublicacion;
       }
 
-      if(this.panels[2].selectOption){
-        let inmueble = this.defaultOptions.inmueble_types.find(i => i.Descripcion === this.panels[2].selectOption);
-        reqParams['IdTipoInmueble']=inmueble.IdTipoInmueble;
-      }
+      // if(this.panels[2].selectOption){
+      //   let inmueble = this.defaultOptions.inmueble_types.find(i => i.Descripcion === this.panels[2].selectOption);
+      //   reqParams['IdTipoInmueble']=inmueble.IdTipoInmueble;
+      // }
 
-      if(this.panels[3].selectOption){
-        let ago = 'today';
-        if(this.panels[3].selectOption === 'Desde Ayer') ago = '-1 day';
-        else if(this.panels[3].selectOption === 'Última Semana') ago = '-1 week';
-        else if(this.panels[3].selectOption === 'Últimos 15 Días') ago = '-15 days';
-        else if(this.panels[3].selectOption === 'Últimos 30 Días') ago = '-30 days';
-        else if(this.panels[3].selectOption === 'Últimos 45 Días') ago = '-45 days';
-        reqParams['FechaCreacion'] = ago;
-      }
+      // if(this.panels[3].selectOption){
+      //   let ago = 'today';
+      //   if(this.panels[3].selectOption === 'Desde Ayer') ago = '-1 day';
+      //   else if(this.panels[3].selectOption === 'Última Semana') ago = '-1 week';
+      //   else if(this.panels[3].selectOption === 'Últimos 15 Días') ago = '-15 days';
+      //   else if(this.panels[3].selectOption === 'Últimos 30 Días') ago = '-30 days';
+      //   else if(this.panels[3].selectOption === 'Últimos 45 Días') ago = '-45 days';
+      //   reqParams['FechaCreacion'] = ago;
+      // }
 
-      if(this.panels[4].selectOption){
-        let _num = Number(this.panels[4].selectOption);
-        reqParams['Num_Habitaciones']=_num ? _num : 5;
-      }
+      // if(this.panels[4].selectOption){
+      //   let _num = Number(this.panels[4].selectOption);
+      //   reqParams['Num_Habitaciones']=_num ? _num : 5;
+      // }
 
-      if(this.panels[5].selectOption){
-        let _num = Number(this.panels[5].selectOption);
-        reqParams['Num_Banios']=_num ? _num : 5;
-      }
+      // if(this.panels[5].selectOption){
+      //   let _num = Number(this.panels[5].selectOption);
+      //   reqParams['Num_Banios']=_num ? _num : 5;
+      // }
 
-      if(this.panels[6].selectOption){
-        let _num = Number(this.panels[6].selectOption);
-        reqParams['Num_Cochera']=_num ? _num : 5;
-      }
+      // if(this.panels[6].selectOption){
+      //   let _num = Number(this.panels[6].selectOption);
+      //   reqParams['Num_Cochera']=_num ? _num : 5;
+      // }
 
-      if(this.panels[7].selectOption){
-        let superficie = this.panels[7].selectOption;
-        if(superficie.option === 'Total')
-          reqParams['Num_AreaTotal'] = [Number(superficie.from), Number(superficie.to)];
-        else
-          reqParams['Num_AreaTechado'] = [Number(superficie.from), Number(superficie.to)];
-      }
+      // if(this.panels[7].selectOption){
+      //   let superficie = this.panels[7].selectOption;
+      //   if(superficie.option === 'Total')
+      //     reqParams['Num_AreaTotal'] = [Number(superficie.from), Number(superficie.to)];
+      //   else
+      //     reqParams['Num_AreaTechado'] = [Number(superficie.from), Number(superficie.to)];
+      // }
 
-      if(this.panels[8].selectOption){
-        let price = this.panels[8].selectOption;
-        let findMoneda = this.defaultOptions.moneda_types.find(m => m.Descripcion === price.option);
-        reqParams['IdTipoMoneda'] = findMoneda.IdTipoMoneda;
-        reqParams['Num_Precio'] = [Number(price.from), Number(price.to)];
-      }
+      // if(this.panels[8].selectOption){
+      //   let price = this.panels[8].selectOption;
+      //   let findMoneda = this.defaultOptions.moneda_types.find(m => m.Descripcion === price.option);
+      //   reqParams['IdTipoMoneda'] = findMoneda.IdTipoMoneda;
+      //   reqParams['Num_Precio'] = [Number(price.from), Number(price.to)];
+      // }
 
       return reqParams;
     },
@@ -678,8 +683,6 @@ export default {
     },
     initPublicactionForm(index){
       let pub = this.publications[index];
-      if(!pub.detail) return;
-
       let detail = pub.detail;
       let _form = {};
       

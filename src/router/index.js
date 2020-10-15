@@ -42,7 +42,8 @@ import Notificaciones from "../views/notificaciones/Notificaciones";
 // AMC
 import AMC1 from "../views/amc/AMC1";
 import AMC2 from "../views/amc/AMC2";
-import AMC4 from "../views/amc/AMC3";
+import AMC3 from "../views/amc/AMC3";
+import AMC4 from "../views/amc/AMC4";
 import AMCDetail from "../views/amc/AMCDetail";
 
 // Brocker
@@ -215,6 +216,14 @@ export default new Router({
             }
         },
         {
+            path: "/venta_inmuebles",
+            name: "venta_inmuebles",
+            component: Inmuebles,
+            meta: {
+                auth: false
+            }
+        },
+        {
             path: "/inmuebles/mapa",
             name: "inmuebles_mapa",
             component: InmueblesMapa,
@@ -265,6 +274,15 @@ export default new Router({
         {
             path: "/amc/3",
             name: "amc_3",
+            component: AMC3,
+            meta: {
+                auth: true,
+                roles: ["1", "2"]
+            }
+        },
+        {
+            path: "/amc/4",
+            name: "amc_4",
             component: AMC4,
             meta: {
                 auth: true,

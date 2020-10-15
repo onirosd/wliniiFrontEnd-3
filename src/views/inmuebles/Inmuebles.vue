@@ -136,7 +136,7 @@ import { currencySymbol } from "@/common/helpers";
 import FiltroPublicacion from "../../components/publicaciones/FiltroPublicacion";
 import { GetInmuebles } from "@/common/inmueble_apis";
 import { GetGeneralOptions } from "@/common/home_apis";
-import { SERVER_URL } from "@/common/config";
+import { SERVER_URL, Filters } from "@/common/config";
 
 export default {
   data: () => ({
@@ -151,75 +151,7 @@ export default {
     defaultOptions: null,
     cards: [],
     pageType: null,
-    panels: [
-      {
-        state: false,
-        name: "Ubicación",
-        options: [],
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Tipo de Operación",
-        options: [],
-        toggle: true,
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Tipo de inmueble",
-        options: [],
-        toggle: true,
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Fecha de Publicación",
-        type: null,
-        toggle: true,
-        options: ["Desde Ayer", "Hoy", "Última Semana", "Últimos 15 Días", "Últimos 30 Días", "Últimos 45 Días"],
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Dormitorios",
-        type: "row",
-        options: ["1", "2", "3", "4", ">5"],
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Baños",
-        type: "row",
-        options: ["1", "2", "3", "4", ">5"],
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Estacionamientos",
-        type: "row",
-        options: ["1", "2", "3", "4", ">5"],
-        selectOption: null
-      },
-      {
-        state: false,
-        name: "Superficie",
-        type: "selection-range",
-        toggle: true,
-        options: ["Techada", "Total"],
-        selectOption: null,
-        range: []
-      },
-      {
-        state: false,
-        name: "Precio",
-        type: "selection-range",
-        toggle: true,
-        options: ["Soles", "Dolares", "Euros"],
-        selectOption: null,
-        range: []
-      }
-    ]
+    panels: Filters
   }),
 
   components: {
@@ -244,6 +176,9 @@ export default {
     },
   },
   watch: {
+      $route(to, from) {
+        window.location.reload();
+      },
       page: function(curPage){
         this.navigate();
       },
@@ -261,7 +196,8 @@ export default {
 
     this.query = this.$route.query;
     GetGeneralOptions().then(res => {
-      if(res && res.data) this.initFilterOptions(res.data);
+      if(res && res.data) this.defaultOptions = res.data;
+      this.initFilterOptions();
       this.navigate();
     }).catch(err => {
         console.log(err);
@@ -317,8 +253,9 @@ export default {
       this.cards = _pub;
     },
 
-    initFilterOptions(options){
-      this.defaultOptions = options;
+    initFilterOptions(){
+      if(!this.defaultOptions) return;
+      let options = this.defaultOptions;
       let _panels = [], _location = null, _operacion = null, _inmueble = null;
 
       if(this.query){

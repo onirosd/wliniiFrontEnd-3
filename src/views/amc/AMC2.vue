@@ -13,7 +13,7 @@
         <div class="filter">
           <div class="filter-header">filtros</div>
           <div class="filter-body">
-            <FiltroPublicacion :panels="panels" @onChange="handleChangedFilter" :disabled="step === 3"></FiltroPublicacion>
+            <FiltroPublicacion :panels="panels" @onChange="handleChangedFilter"></FiltroPublicacion>
             <w-btn
               :fullwidth="true"
               color="secondary"
@@ -34,13 +34,12 @@
             :small="true"
             color="primary"
             class="step-btn"
-          >0{{step}} PASO</w-btn>
+          >02 PASO</w-btn>
          
        
          <div class="flex flex-row" style="align-items:center">
           <div class="w-full p-5 md:pl-5 md:pr-2">
-             <p v-if="step == 2" class="body subtitle-md bold ml-5">Agregar Oferta Pública</p>
-              <p v-else class="body subtitle-md bold ml-5">Agregar Vendidos o Agregar Alquilados</p>
+             <p class="body subtitle-md bold ml-5">Agregar Oferta Pública</p>
           </div>
           <div class="flex flex-row justify-center md:pr-2 md:justify-end md:mr-5">
             
@@ -88,7 +87,7 @@
                   <p class="caption bold white-text">FILTROS</p>
                 </template>
 
-                <FiltroPublicacion :panels="panels" @onChange="handleChangedFilter" :disabled="step === 3"></FiltroPublicacion>
+                <FiltroPublicacion :panels="panels" @onChange="handleChangedFilter"></FiltroPublicacion>
               </w-card>
             </div>
           </div>
@@ -450,7 +449,6 @@ export default {
         try{
             saved_state = JSON.parse(saved_state);
 
-            this.step = saved_state.step;
             this.selectedIdList = saved_state.s;
             this.manualOffers = saved_state.m;
             this.panels = saved_state.p;
@@ -586,7 +584,6 @@ export default {
         reqParams['Num_Precio'] = [Number(price.from), Number(price.to)];
       }
 
-      if(this.step === 3) reqParams['sold'] = true;
       return reqParams;
     },
 
@@ -661,14 +658,7 @@ export default {
     },
     nextStep(){
       this.saveCurrentState();
-
-      if(this.step == 2){
-        window.scrollTo(0, 0);
-        this.step = 3;
-        this.filterPublications();
-      }else{
-        this.$router.push('/amc/3');
-      }
+      this.$router.push('/amc/3');
     },
     saveCurrentState(){
       let _selected = [];
@@ -684,12 +674,7 @@ export default {
 
       _selected = [..._selected, ...this.manualOffers];
 
-      if(this.step === 2) localStorage.setItem('AMC_2', JSON.stringify(_selected));
-      else localStorage.setItem('AMC_3', JSON.stringify(_selected));
-
-      this.selectedIdList = [];
-      this.manualOffers = [];
-      this.publications = [];
+      localStorage.setItem('AMC_2', JSON.stringify(_selected));
     },
     goToDetail(id){
       this.showDetail = true;

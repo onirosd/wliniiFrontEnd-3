@@ -213,7 +213,7 @@ export default {
         notiCount: 0,
         routes: [
             { name: "Alquiler", path: "/inmuebles", param: {operacion: 'Alquiler'} },
-            { name: "Venta", path: "/inmuebles", param: {operacion: 'Venta'} },
+            { name: "Venta", path: "/venta_inmuebles", param: {operacion: 'Venta'} },
             { name: "Nosotros", path: "/nosotros" },
             { name: "Contacto", path: "/contactanos" }
         ],

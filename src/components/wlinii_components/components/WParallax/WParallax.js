@@ -26,14 +26,14 @@ Vue.component("w-parallax", {
 
   computed: {
     containerStyle() {
-      return `margin-bottom: ${this.height}vh;`;
+      return `margin-bottom: ${this.height};`;
     },
 
     parallaxStyle() {
       return `
             background-image: url(${this.image}); 
             background-position-y: '0px'; 
-            height: ${this.height}vh; 
+            height: ${this.height}; 
             position: ${this.position};
         `;
     }

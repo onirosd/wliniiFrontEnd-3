@@ -24,17 +24,20 @@
                             </w-btn>
                         </div>
                         <div class="w-full flex flex-row justify-center my-5">
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('email')">
                                 <w-icon icon="mail-grey" h="12px"></w-icon>
                             </w-btn>
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('facebook')">
                                 <w-icon icon="facebook-grey" h="15px"></w-icon>
                             </w-btn>
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('linkedin')">
                                 <w-icon icon="linkedin-grey" h="17px"></w-icon>
                             </w-btn>
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('twitter')">
                                 <w-icon icon="twitter-grey" h="15px"></w-icon>
+                            </w-btn>
+                            <w-btn :icon="true" @click="openWindow('instagram')">
+                                <w-icon icon="instagram-grey" h="17px"></w-icon>
                             </w-btn>
                         </div>
                     </div>
@@ -78,17 +81,20 @@
                     </div>
                     <div class="w-full">
                         <div class="w-full flex flex-row justify-start mb-5" style="margin-left: -6px;">
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('email')">
                                 <w-icon icon="mail-grey" h="12px"></w-icon>
                             </w-btn>
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('facebook')">
                                 <w-icon icon="facebook-grey" h="15px"></w-icon>
                             </w-btn>
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('linkedin')">
                                 <w-icon icon="linkedin-grey" h="17px"></w-icon>
                             </w-btn>
-                            <w-btn :icon="true">
+                            <w-btn :icon="true" @click="openWindow('twitter')">
                                 <w-icon icon="twitter-grey" h="15px"></w-icon>
+                            </w-btn>
+                            <w-btn :icon="true" @click="openWindow('instagram')">
+                                <w-icon icon="instagram-grey" h="17px"></w-icon>
                             </w-btn>
                         </div>
                     </div>
@@ -199,12 +205,21 @@ export default {
                 email: data.Des_Correo1,
                 NUsuario:data.NUsuario,
                 empresa : data.Des_Empresa,
-                stars: parseInt(data.Num_Valoracion)
+                stars: parseInt(data.Num_Valoracion),
+                facebook: data.Des_Rs_Facebook,
+                linkedin: data.Des_Rs_Linkedin,
+                twitter: data.Des_Rs_Twitter,
+                instagram: data.Des_Rs_Instagram
             }
 
             this.transacciones[0].n = parseInt(data.Num_Transacciones) || 0;
             this.transacciones[1].n = parseInt(data.Num_Activas) || 0;
             this.transacciones[2].n = parseInt(data.Num_canceladas) || 0;
+        },
+        openWindow(link){
+            if(link == 'email') return;
+
+            window.open(this.agent[link], '_blank');
         }
     },
 };
