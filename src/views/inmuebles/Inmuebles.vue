@@ -96,7 +96,7 @@
                         </div>
                         <div class="info-item">
                           <w-icon icon="bath-solid" h="15px"></w-icon>
-                          <p class="white-text">{{ card.info.baños }}</p>
+                          <p class="white-text">{{ card.info.banios }}</p>
                         </div>
                         <div class="info-item">
                           <w-icon icon="parking-solid" h="12px"></w-icon>
@@ -108,7 +108,7 @@
                       </div>
                       <div class="info-item">
                         <w-icon icon="size" h="15px"></w-icon>
-                        <p class="white-text">{{ card.info.tamaño }}</p>
+                        <p class="white-text">{{ card.info.area }}</p>
                       </div>
                     </div>
                   </template>
@@ -243,9 +243,9 @@ export default {
           descripcion: '',
           info: {
             habitaciones: p.Num_Habitaciones ? p.Num_Habitaciones : 0,
-            baños: _banios_total,
+            banios: _banios,
             estacionamiento: p.Num_Cochera ? p.Num_Cochera : 0,
-            tamaño: (p.Num_AreaTotal ? p.Num_AreaTotal : 0) + 'M2'
+            area: (p.Num_AreaTotal ? p.Num_AreaTotal : 0) + 'M2'
           },
         });
       })

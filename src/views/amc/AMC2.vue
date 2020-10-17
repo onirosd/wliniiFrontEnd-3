@@ -230,7 +230,7 @@ export default {
       showDetail: false,
       isLoaded: false,
       curreny: null,
-      selectedCur: 'Soles',
+      config: {moneda: 'Soles'},
       cards: [
         {
           tipo: "Alquiler",
@@ -379,8 +379,7 @@ export default {
       let _config = localStorage.getItem('AMC_CONFIG');
       if(!_config) return;
 
-      _config = JSON.parse(_config);
-      this.selectedCur = _config.moneda;
+      this.config = JSON.parse(_config);
     },
     initPublications(data){
       if(!data || !data.length){
@@ -390,7 +389,7 @@ export default {
 
       let _pub = [];
       data.map(p => {
-        let _curSymbol = currencySymbolByString(this.selectedCur);
+        let _curSymbol = currencySymbolByString(this.config.moneda);
         let _operacion = this.defaultOptions.operation_types.find(o => o.IdTipoOperacion === p.IdTipoOperacion);
 
         let _ubicacion = this.defaultOptions.locations.find(a => a.IdUbigeo === p.IdUbigeo);
@@ -481,7 +480,7 @@ export default {
         type: null,
         toggle: true,
         options: operationList,
-        selectOption: null
+        selectOption: this.config.operation ? this.config.operation : null
       });
 
       let inmuebles = options.inmueble_types;
@@ -493,7 +492,7 @@ export default {
         type: null,
         toggle: true,
         options: inmuebleList,
-        selectOption: null
+        selectOption: this.config.inmueble ? this.config.inmueble : null
       });
 
       this.panels = [..._panels, ...this.panels.slice(3)];
@@ -688,9 +687,9 @@ export default {
       this.$router.push('/amc/detallepublicacion/' + id);
     },
     convertCurrency(cur, value){
-      if(!cur || this.selectedCur == cur || !this.curreny) return value;
+      if(!cur || this.config.moneda == cur || !this.curreny) return value;
       
-      let to = parseFloat(this.curreny[this.selectedCur]);
+      let to = parseFloat(this.curreny[this.config.moneda]);
       let from = parseFloat(this.curreny[cur]);
 
       if(!from || !to) return value;

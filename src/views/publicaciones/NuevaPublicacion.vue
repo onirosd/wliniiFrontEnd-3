@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="w-full md:w-1/3 px-2">
                                         <w-select
-                                            label="PROVINCIAS"
+                                            label="PROVINCIA"
                                             placeholder="Elegir provincias..."
                                             :options="provinces"
                                             v-model="tmpdata.provincias"
@@ -873,7 +873,13 @@ export default {
         },
 
         uploadImages(id){
-            const files = this.$refs["photoFile"].files;
+            const files = [];
+            if(this.resource.photos.length){
+                this.resource.photos.forEach(p => {
+                    if(p.file) files.push(p.file);
+                });
+            }
+            
             if(!files.length) {
                 this.pageLoading = false;
                 this.gotoPublications();

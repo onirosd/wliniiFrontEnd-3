@@ -102,7 +102,7 @@
                   <div v-if="pub.showForm">
                     <p class="body bold white-text">Opciones Publicaciones</p>
                     <br />
-                    <form>
+                    <form style="min-height: 200px">
                         <w-select placeholder="Elegir Motivo" :options="publicacionStates"
                           v-model="pub.form.motivo"
                           :dark="true"
