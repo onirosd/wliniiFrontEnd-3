@@ -143,20 +143,20 @@
                                     </div>
                                 </div>
 
-                                <div class="w-full md:w-1/3 flex flex-row flex-wrap">
+                                <!-- <div class="w-full md:w-1/3 flex flex-row flex-wrap">
                                     <div class="w-full md:w-1/2">
                                         <w-checkbox
                                             label="Mostrar dirección"
                                             v-model="form.Flg_MostrarDireccion"
                                         ></w-checkbox>
                                     </div>
-                                    <!-- <div class="w-full md:w-1/2">
+                                    <div class="w-full md:w-1/2">
                                         <w-checkbox
                                             label="Ocultar dirección"
                                             v-model="tmpdata.ocultardireccion"
                                         ></w-checkbox>
-                                    </div> -->
-                                </div>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="form-section">
@@ -732,6 +732,8 @@ export default {
             delete data.UsuarioModificacion;
             delete data.Des_DireccionManual;
 
+            data.Flg_MostrarDireccion = true;
+            
             this.form = data;
         },
         initDepartments(){
