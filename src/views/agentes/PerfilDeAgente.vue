@@ -334,9 +334,9 @@ export default {
             let formData = new FormData();
             formData.append('file', file);
             UpdateProfileImage(formData).then(res => {
-                if(res && res.data) {
+                if(res && res.data.status == 'success') {
                     notify('success', null, 'Imagen cargada exitosamente');
-                    this.$store.dispatch('setUserAvatar', res.data);
+                    this.$store.dispatch('setUserAvatar', res.data.url);
                     window.location.reload();
                 }
             }).catch(err => {
