@@ -109,7 +109,7 @@ export default {
     data() {
         return {
             form: {
-                totalarea: null,
+                totalarea: 100,
                 coverarea: null,
                 address: '',
                 client: '',

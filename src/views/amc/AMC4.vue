@@ -223,7 +223,9 @@ export default {
                 this.soldResult = result;
             }
 
-            let _finalPrice = (this.soldResult.average + this.offerResult.average)/2;
+            let _finalPrice = 0;
+            if(this.soldResult.average == 0 || this.offerResult.average == 0) _finalPrice = this.soldResult.average + this.offerResult.average;
+            else _finalPrice = (this.soldResult.average + this.offerResult.average)/2;
             this.finalPrice = parseFloat(_finalPrice.toFixed(3));
 
             _finalPrice = _finalPrice*parseFloat(this.config.totalarea);
