@@ -402,46 +402,7 @@ export default {
     
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: table;
-    transition: opacity .3s ease;
-    
-    &-wrapper {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    
-    &-container {
-        background: #fff;
-        width: 450px;
-        border-radius: 5px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-        transition: all .3s ease;
-        margin: 0 auto;
-        padding: 60px 30px 20px;
-    }
-    
-    &-footer {
-        margin-top: 15px;
-        text-align: center;
-    }
-    
-    &-enter, &-leave {
-        opacity: 0;
-    }
-    
-    &-enter &-container,
-    &-leave &-container {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-}
+
 .youtube-video-container{
     position: relative;    
  

@@ -109,11 +109,13 @@ export default {
     data() {
         return {
             form: {
-                totalarea: 100,
+                operation: null,
+                inmueble: null,
+                totalarea: '',
                 coverarea: null,
                 address: '',
                 client: '',
-                moneda: 'Soles'                
+                moneda: null                
             },
             monedaOptions: [],
             operationOptions: [],
@@ -147,7 +149,7 @@ export default {
             this.inmuebleOptions = [];
             options.inmueble_types.map(m => { this.inmuebleOptions.push(m.Descripcion); });
             
-            this.form = {...this.form, operation: this.operationOptions[0], inmueble: this.inmuebleOptions[0]};
+            // this.form = {...this.form, operation: this.operationOptions[0], inmueble: this.inmuebleOptions[0]};
         },
         nextStep(){
             this.saveConfig();
