@@ -104,7 +104,7 @@
                             <div class="w-full md:w-1/3 px-2">
                                 <w-input
                                     label="celular de trabajo"
-                                    placeholder="Ingrese ..."
+                                    placeholder="Ejm. 51925876225"
                                     v-model="form.Des_Telefono1"
                                 ></w-input>
                             </div>
@@ -218,8 +218,14 @@
                         </form>
                     </div>
                     <div class="w-1/2 px-4">
-                        <p class="bold caption mt-10 mb-2">INSINUACIÓN</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. lor sit amet, consectetuer adipiscing elit. Donec odio</p>
+                        <p class="bold caption mt-10 mb-2">RECOMENDACIONES</p>
+                        <p> - Hacer claves de una longitud mínima de 8 caracteres. </p>
+  <p>- Realizar combinaciones alfanuméricas.</p>
+  <p>- Evitar palabras comunes.</p>
+  <p>- Anotar su clave en un sitio seguro hasta que logre memorizarla bien.</p>
+
+
+                        
                     </div>
                 </div>
             </w-card>

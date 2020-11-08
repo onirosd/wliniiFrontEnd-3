@@ -81,15 +81,8 @@
                     >
                         <div class="w-2/2 lg:w-2/3 flex flex-row justify-center md:justify-start">
                             <w-icon icon="lock" h="45px" class="hidden md:block mt-3 mr-5"></w-icon>
-                            <div>
-                                <p
-                                    class="body subtitle-md light white-text text-center md:text-left"
-
-                                >¿ Eres Agente Inmobiliario ?</p>
-                                <p
-                                    class="body tertiary-text text-center md:text-left"
-                                >solicíta tu cuenta en pocos minutos</p>
-                            </div>
+                            <div class="description" v-html="eresagente"></div>
+                           
                         </div>
                         <div class="hidden md:block md:w-1/3"></div>
                         <div v-if="!isLogged" class="w-full md:w-1/3 mb-2 flex flex-row justify-center">
@@ -286,10 +279,7 @@
             <div class="flex flex-row justify-center mt-5">
                 <div class="w-2/3 md:1/3">
                     <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. Donec odio. Quisque volutpat mattis eros. Nullam
-                        malesuada erat ut turpis. Suspendisse urna nibh, viverra
-                        non, semper suscipit, posuere a, pede.
+                        Profesionales inmobiliarios comprometidos a ayudar y satisfacer sus clientes.
                     </p>
                 </div>
             </div>
@@ -455,7 +445,8 @@ export default {
         agents: [],
         news: [],
         tipooperacion:{},
-        loading: true
+        loading: true,
+        eresagente : "   <p class='body subtitle-md light white-text text-center md:text-left'> ¿ Eres Agente Inmobiliario ? </p> <p class='body tertiary-text text-center md:text-left'> solicíta tu cuenta en pocos minutos </p>"
     }),
 
     computed: {
@@ -500,7 +491,10 @@ export default {
         let user = this.$store.getters.user;
         if(userToken && user){
 
+             this.eresagente = "   <p class='body subtitle-md light white-text text-center md:text-left'> ¿Cansado de perder hacer cierres por no tener el inmueble? </p> <p class='body tertiary-text text-center md:text-left'> Encuéntralo aquí en pocos minutos </p>";
+
              this.isLogged  = true;
+
             if(user.type == "1" || user.type == "2") {
                 
                 this.isManager = true;

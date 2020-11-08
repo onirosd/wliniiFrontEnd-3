@@ -13,12 +13,7 @@
                     <p class="subtitle bold mt-5 ml-5">Editar Publicación</p>
                     <p class="ml-5">Editar la información de la nueva publicación</p>
 
-                    <div class="lg:w-2/3 primary rounded-bl-full rounded-r-full lg:ml-5 mt-6 p-4">
-                        <p
-                            class="caption white-text truncate"
-                        >Configuración flexible y formas de edición, agregue y edite información de listado, fotos y ubicación de la posición</p>
-                    </div>
-
+                  
                     <form @submit.prevent>
                         <div class="form-section">
                             <div

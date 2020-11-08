@@ -27,22 +27,12 @@
                                 <w-nav-btn :disabled="true">
                                     <!-- <w-icon icon="phone-brown" h="17px"></w-icon> -->
                                     <!-- <p class="caption bold white-text" @click="contactWithWhatsApp('+51994641341')">+51 994641341</p> -->
-                                    <w-btn
-                                        color="#41C541"
-                                        :dark="true"
-                                        :rounded="true"
-                                        class="m-btn m-0"
-                                        @click="openWindow('https://bit.ly/2ZJgJ0c')"
-                                    >
-                                        <div class="flex flex-row justify-center md:justify-between">
-                                            <w-icon icon="whatsapp" h="21px" class="self-center mr-5"></w-icon>
-                                            <p class="self-center">WHATSAPP</p>
-                                        </div>
-                                    </w-btn>
+                                  
                                     
                                 </w-nav-btn>
                             </div>
                             <div class="custom-items-margin hidden lg:block">
+                                <w-nav-btn icon="whatsapp-default" iconH="30px" @click="openWindow('https://bit.ly/2ZJgJ0c')"></w-nav-btn>
                                 <w-nav-btn icon="facebook-white" iconH="30px" @click="openWindow('https://www.facebook.com/WliniiAgentes')"></w-nav-btn>
                                 <w-nav-btn icon="instagram-white" iconH="30px" @click="openWindow('https://www.instagram.com/Wliniiperu')"></w-nav-btn>
                                 <w-nav-btn icon="twitter-white" iconH="30px" @click="openWindow('https://twitter.com/Wlinii')"></w-nav-btn>
