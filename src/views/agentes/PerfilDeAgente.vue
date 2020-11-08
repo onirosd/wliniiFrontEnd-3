@@ -174,14 +174,14 @@
             </w-card>
         </div>
         <br />
-        <div class="hidden lg:block md:block agente-perfil-container">
+        <div class="agente-perfil-container">
             <w-card :shadow="false">
                 <div class="flex justify-around">
-                    <div class="w-1/2 px-4">
+                    <div class="w-full md:w-1/2 px-4">
                         <p class="tertiary-text bold body ml-5 mb-5">Cambia tu contraseña</p>
                         <br />
                         <form @submit.prevent>
-                            <div class="w-4/5">
+                            <div class="md:w-4/5">
                                 <w-input
                                     label="CONTRASEÑA ACTUAL"
                                     type="password"
@@ -189,7 +189,7 @@
                                     v-model="authForm.currentpassword"
                                 ></w-input>
                             </div>
-                            <div class="w-4/5">
+                            <div class="md:w-4/5">
                                 <w-input
                                     label="NUEVA CONTRASEÑA"
                                     type="password"
@@ -197,7 +197,7 @@
                                     v-model="authForm.newpassword"
                                 ></w-input>
                             </div>
-                            <div class="w-4/5">
+                            <div class="md:w-4/5">
                                 <w-input
                                     label="CONFIRMACIÓM NUEVA CONTRASEÑA"
                                     type="password"
@@ -217,15 +217,12 @@
                             </div>
                         </form>
                     </div>
-                    <div class="w-1/2 px-4">
+                    <div class="hidden md:block w-1/2 px-4">
                         <p class="bold caption mt-10 mb-2">RECOMENDACIONES</p>
                         <p> - Hacer claves de una longitud mínima de 8 caracteres. </p>
-  <p>- Realizar combinaciones alfanuméricas.</p>
-  <p>- Evitar palabras comunes.</p>
-  <p>- Anotar su clave en un sitio seguro hasta que logre memorizarla bien.</p>
-
-
-                        
+                        <p>- Realizar combinaciones alfanuméricas.</p>
+                        <p>- Evitar palabras comunes.</p>
+                        <p>- Anotar su clave en un sitio seguro hasta que logre memorizarla bien.</p>
                     </div>
                 </div>
             </w-card>
