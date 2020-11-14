@@ -132,7 +132,7 @@
                         </div>
                         
                         <w-input
-                          label="Monto de Venta"
+                          label="Monto de la Transacción"
                           type="Number"
                           :tile="true"
                           color="secondary"
@@ -485,7 +485,8 @@ export default {
           Habitaciones: p.Num_Habitaciones ? p.Num_Habitaciones : 0,
           Cochera: p.Num_Cochera ? p.Num_Cochera : 0,
           Comision: _comision,
-          Precio: _curSymbol + '/ ' + parseFloat(p.Num_Precio ? p.Num_Precio : 0),
+          Precio:   _curSymbol +(p.IdTipoMoneda == 2 ? ' ':'/ ')+ parseFloat(p.Num_Precio ? p.Num_Precio : 0),
+         
           Consultar: p.Flg_Consultar,
           image_url: p.images.length ? SERVER_URL + p.images[0].Des_url : 'images/dummy.jpg',
           showForm: false,

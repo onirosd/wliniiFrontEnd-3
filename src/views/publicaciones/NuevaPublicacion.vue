@@ -195,7 +195,7 @@
                                         class="w-full md:w-1/3 self-center"
                                         style="margin-top: -10px ; "
                                     >
-                                        <w-checkbox label="Consultar" v-model="form.Flg_Consultar"></w-checkbox>
+                                   <!--      <w-checkbox label="Consultar" v-model="form.Flg_Consultar"></w-checkbox> -->
                                     </div>
                                 </div>
                                <!--  <div>
@@ -237,8 +237,8 @@
 
                                         <div class="wrapper" style="margin-left: 1em;">
                                       <label class="input-label" >{{cambiar_comision}}</label> <br>
-                                      <input type="range" min="0" max="100" step="1" v-model="form.Num_Comision" style="width: 80%;"> 
-                                      <input :label="cambiar_comision" type="number" v-model="form.Num_Comision" style="width: 12%; margin-left: 10px;"/><b>%</b>
+                                      <input type="number" min="0" max="100" v-model="form.Num_Comision" style="width: 70%;"> 
+                                      <input :label="cambiar_comision" type="number" disabled="disabled" v-model="form.Num_Comision" style="width: 20%; margin-left: 10px;"/><b>%</b>
 
                                        </div>
                                     </div>
@@ -253,8 +253,8 @@
 
                                         <div class="wrapper" style="margin-left: 1em;">
                                       <label class="input-label" >{{cambiar_compartir}}</label> <br>
-                                      <input type="range" min="0" max="50" step="1" v-model="form.Num_ComisionCompartir" style="width: 80%;"> 
-                                      <input :label="cambiar_compartir" type="number" v-model="form.Num_ComisionCompartir" style="width: 12%; margin-left: 10px;"/><b>%</b>
+                                      <input type="number" :max="50" v-model="form.Num_ComisionCompartir" style="width: 70%;"> 
+                                      <input :label="cambiar_compartir" disabled="disabled" type="number" v-model="form.Num_ComisionCompartir" style="width: 20%; margin-left: 10px;"/><b>%</b>
 
                                        </div>
 
@@ -606,7 +606,7 @@ export default {
         departments: [],
         provinces: [],
         districts: [],
-        cambiar_comision : "Porcentaje a Comisionar",
+        cambiar_comision : "Porcentaje de Comisión",
         cambiar_compartir: "Porcentaje a Compartir"
     }),
 

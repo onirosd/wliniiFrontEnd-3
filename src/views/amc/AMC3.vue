@@ -39,7 +39,7 @@
        
          <div class="flex flex-row" style="align-items:center">
           <div class="w-full p-5 md:pl-5 md:pr-2">
-              <p class="body subtitle-md bold ml-5">Agregar Vendidos o Agregar Alquilados</p>
+              <p class="body subtitle-md bold ml-5">Agregar Vendidos o Alquilados</p>
           </div>
           <div class="flex flex-row justify-center md:pr-2 md:justify-end md:mr-5">
             

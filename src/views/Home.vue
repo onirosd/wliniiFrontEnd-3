@@ -101,7 +101,7 @@
         <div class="home-fix"></div>
         <!-- PORQUE WLINII -->
         <div class="flex flex-row justify-center">
-            <h1 class="subtitle bold">¿Porqué usar Wlinii?</h1>
+            <h1 class="subtitle bold">¿Por qué usar Wlinii?</h1>
         </div>
         <div class="divider"></div>
         <div class="flex flex-row justify-between flex-wrap">
@@ -610,7 +610,7 @@ export default {
                     body: _addr,
                     image: p.images.length ? SERVER_URL + p.images[0].Des_url : 'images/dummy.jpg',
                     comision: _comision,
-                    mes: _curSymbol + '/ ' + parseFloat(p.Num_Precio),
+                    mes:   _curSymbol +(p.IdTipoMoneda == 2 ? ' ':'/ ')+ parseFloat(p.Num_Precio),
                     direccion: '',
                     descripcion: '',
                     info: {
