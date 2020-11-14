@@ -483,7 +483,9 @@ export default {
                 comision: 0,
                 comision_compartir:0,
                 dir: data.ubigeo.FullText + " " + data.Des_Urbanizacion,
-                price: _curSymbol + '/ ' + parseFloat(data.Num_Precio),
+                price: 
+                _curSymbol +(data.IdTipoMoneda == 2 ? ' ':'/ ')+  new Intl.NumberFormat().format(data.Num_Precio),
+
                 state: data.tipooperacion.Descripcion,
                 description: data.Des_Subtitulo2,
                 subtitle: data.Des_Subtitulo,
