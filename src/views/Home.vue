@@ -689,7 +689,7 @@ export default {
         },
         gotoNoticiasDetail(noti){
             // if(!this.isManager) return;
-            this.$router.push('/noticias/detalle/' + noti.idnoticias.trim());
+            this.$router.push('/noticias/detalle/' + noti.idnoticias);
         },
         contactWithWhatsApp(){
             let owner = this.detail.owner;
