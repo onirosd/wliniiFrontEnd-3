@@ -123,7 +123,9 @@
                             <div class="w-full md:w-auto">
                                 <p class="body bold white-text text-center md:text-left">
                                     PRECIO SUGERIDO:
-                                    <span class="hidden md:block">{{curSymbol + '/ ' + computed_price}}</span>
+                                    <span class="hidden md:block">{{ (curSymbol == '$' ? '$ ' : curSymbol  + '/ ') + computed_price}}</span>
+
+                              
                                 </p>
                             </div>
                             <div class="w-full md:w-auto">
@@ -229,7 +231,7 @@ export default {
             this.finalPrice = parseFloat(_finalPrice.toFixed(3));
 
             _finalPrice = _finalPrice*parseFloat(this.config.totalarea);
-            this.computed_price = parseFloat(_finalPrice.toFixed(3));
+            this.computed_price =  new Intl.NumberFormat().format(_finalPrice.toFixed(3)) ;
         },
         calculateResult(data){
             let _max = 0, _min = 0, _sum = 0, _average, _deviation;
@@ -292,7 +294,7 @@ export default {
             this.pageLoading = true;
             let payload = {
                 observacion : this.form.observaciones,
-                finalPrice: this.computed_price,
+                finalPrice: this.computed_price ,
                 offer_max: this.offerResult.max,
                 offer_min: this.offerResult.min,
                 sold_max: this.soldResult.max,

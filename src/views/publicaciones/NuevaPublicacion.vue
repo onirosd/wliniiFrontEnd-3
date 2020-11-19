@@ -41,7 +41,13 @@
                                             placeholder="Pendientes"
                                             :options="operationOptions"
                                             v-model="tmpdata.tipooperacion"
-                                        ></w-select>
+                                        >
+                                            <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Selecciona el tipo de Operación a realizar</p>
+                                            </template>
+                                        </w-select>
+                                         
                                     </div>
                                     <div class="w-full md:w-1/3 px-2">
                                         <w-select
@@ -49,7 +55,14 @@
                                             placeholder="Pendientes"
                                             :options="inmuebleOptions"
                                             v-model="tmpdata.tipoinmueble"
-                                        ></w-select>
+                                        >
+                                            
+                                              <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Selecciona el tipo de inmueble a registrar</p>
+                                            </template>
+                                        </w-select>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -76,11 +89,14 @@
                                             :options="departments"
                                             v-model="tmpdata.departamento"
                                         >
-                                            <template slot="snackbar">
-                                                <p class="bold">Importante!</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+
+                                           <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Debes elegir el departamento del inmueble.</p>
                                             </template>
+                                         
                                         </w-select>
+
                                     </div>
                                     <div class="w-full md:w-1/3 px-2">
                                         <w-select
@@ -89,10 +105,11 @@
                                             :options="provinces"
                                             v-model="tmpdata.provincias"
                                         >
-                                            <template slot="snackbar">
-                                                <p class="bold">Importante!</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                           <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Debes elegir la provincia del inmueble.</p>
                                             </template>
+                                           
                                         </w-select>
                                     </div>
                                 </div>
@@ -104,9 +121,10 @@
                                             :options="districts"
                                             v-model="tmpdata.distrito"
                                         >
+                                           
                                             <template slot="snackbar">
-                                                <p class="bold">Importante!</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Debes elegir el distrito del inmueble.</p>
                                             </template>
                                         </w-select>
                                     </div>
@@ -116,10 +134,8 @@
                                             placeholder="Entrar urbanización..."
                                             v-model="form.Des_Urbanizacion"
                                         >
-                                            <template slot="snackbar">
-                                                <p class="bold">Importante!</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
-                                            </template>
+                                           
+                                       
                                         </w-input>
                                     </div>
                                 </div>
@@ -180,7 +196,12 @@
                                             placeholder="Dolar americanos"
                                             :options="monedaOptions"
                                             v-model="tmpdata.moneda"
-                                        ></w-select>
+                                        >
+                                            <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Aqui debes de seleccionar la moneda (soles, euros , dolar) </p>
+                                            </template>
+                                        </w-select>
                                     </div>
                                     <div class="w-full md:w-1/3 px-2">
                                         <w-input
@@ -189,6 +210,10 @@
                                             placeholder="S/00"
                                             v-model="form.Num_Precio"
                                         >
+                                        <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Ingrese el monto de venta de la propiedad</p>
+                                            </template>
                                         </w-input>
                                     </div>
                                     <div
@@ -237,8 +262,8 @@
 
                                         <div class="wrapper" style="margin-left: 1em;">
                                       <label class="input-label" >{{cambiar_comision}}</label> <br>
-                                      <input type="number" min="0" max="100" v-model="form.Num_Comision" style="width: 70%;"> 
-                                      <input :label="cambiar_comision" type="number" disabled="disabled" v-model="form.Num_Comision" style="width: 20%; margin-left: 10px;"/><b>%</b>
+                                      <input class="comisiones" type="number" min="0" max="100" v-model="form.Num_Comision" style="width: 70%;"> 
+                                      <input class="comisiones_det" :label="cambiar_comision" type="number" disabled="disabled" v-model="form.Num_Comision" style="width: 20%; margin-left: 10px;"/><b>%</b>
 
                                        </div>
                                     </div>
@@ -253,8 +278,8 @@
 
                                         <div class="wrapper" style="margin-left: 1em;">
                                       <label class="input-label" >{{cambiar_compartir}}</label> <br>
-                                      <input type="number" :max="50" v-model="form.Num_ComisionCompartir" style="width: 70%;"> 
-                                      <input :label="cambiar_compartir" disabled="disabled" type="number" v-model="form.Num_ComisionCompartir" style="width: 20%; margin-left: 10px;"/><b>%</b>
+                                      <input class="comisiones" type="number" :max="50" v-model="form.Num_ComisionCompartir" style="width: 70%;"> 
+                                      <input class="comisiones_det" :label="cambiar_compartir" disabled="disabled" type="number" v-model="form.Num_ComisionCompartir" style="width: 20%; margin-left: 10px;"/><b>%</b>
 
                                        </div>
 
@@ -341,14 +366,25 @@
                                         label="TITULO"
                                         placeholder=" "
                                         v-model="form.Des_Titulo"
-                                    ></w-input>
+                                    >
+                                        <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Agregue el titulo a la publicación. </p>
+                                            </template>
+                                    </w-input>
                                 </div>
                                 <div class="w-full md:w-1/2 px-2">
                                     <w-input
                                         label="SUBTITULO"
                                         placeholder=" "
                                         v-model="form.Des_Subtitulo"
-                                    ></w-input>
+                                    >
+                                        <template slot="snackbar">
+                                                <p class="bold">Este campo es importatante!</p>
+                                                <p> Tienes que agregar una descripcion breve o comentario de la publicación.</p>
+                                            </template>
+
+                                    </w-input>
                                 </div>
                                 <div class="w-full px-2">
                                     <label for="editor" style="color: #000;font-size: 13px;font-weight: bold; margin-left: 20px">DESCRIPCIÓN DE LA PROPIEDAD</label>
@@ -913,6 +949,23 @@ export default {
 
 <style lang="scss">
 @import "../../components/wlinii_components/sass/_variables.scss";
+
+.comisiones{
+        width: 70%;
+    border: 1px solid black;
+    border-radius: 2em;
+    text-align: center;
+    height: 2em;
+}
+
+.comisiones_det{
+        width: 20%;
+    margin-left: 10px;
+    background: #b1b1b1;
+    height: 2em;
+    border-radius: 2em;
+    text-align: center;
+}
 
 .nueva-publicacion {
     .container-nueva-publicacion {

@@ -417,7 +417,7 @@ export default {
           body: _addr,
           image: p.images.length ? SERVER_URL + p.images[0].Des_url : '/images/dummy.jpg',
           comision: _comision,
-          mes: _curSymbol + '/ ' + _price,
+          mes: _curSymbol +(p.IdTipoMoneda == 2 ? ' ':'/ ')+  new Intl.NumberFormat().format(p.Num_Precio),
           direccion: '',
           descripcion: '',
 

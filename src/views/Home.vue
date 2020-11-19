@@ -277,10 +277,10 @@
             </div>
             <div class="divider"></div>
             <div class="flex flex-row justify-center mt-5">
-                <div class="w-2/3 md:1/3">
-                    <p class="text-center">
+                <div class="w-2/3 md:1/3 text-center">
+                    <n  style = "font-size: 20px;">
                         Profesionales inmobiliarios comprometidos a ayudar y satisfacer sus clientes.
-                    </p>
+                    </n>
                 </div>
             </div>
             <w-carousel

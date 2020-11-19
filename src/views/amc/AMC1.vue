@@ -43,7 +43,7 @@
                                     v-model="form.moneda"
                                 ></w-select>
                                 <w-input
-                                    label="Client"
+                                    label="CLIENTE"
                                     placeholder=""
                                     v-model="form.client"
                                 ></w-input>
