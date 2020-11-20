@@ -371,7 +371,7 @@
                 :key="i"
             >
               <div @click="gotoNoticiasDetail(noti)" >
-                 <w-card  :image="noti.image" :pointer="true" imageHeight="200px" state="tile" >
+                 <w-card class = 'nnoticias'  :image="noti.image" :pointer="true" imageHeight="200px" state="tile" >
                     <template slot="state">
                         <p class="body bold white-text">{{ parseDate(noti.fecpub).day }}</p>
                         <p class="caption bold white-text">{{ parseDate(noti.fecpub).month }}</p>
@@ -727,6 +727,7 @@ export default {
                 background-color: rgba($color: #000000, $alpha: 0.66);
                 padding-right: 50px;
                 padding-left: 50px;
+                min-height: 200px;
             }
 
             .icon {
@@ -770,6 +771,14 @@ export default {
             img {
                 margin: auto !important;
             }
+        }
+    }
+
+    .nnoticias{
+        .card-text{
+            min-height:200px;
+            max-height:200px;
+            overflow-y:auto;
         }
     }
 

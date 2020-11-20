@@ -123,7 +123,7 @@
                             <div class="w-full md:w-auto">
                                 <p class="body bold white-text text-center md:text-left">
                                     PRECIO SUGERIDO:
-                                    <span class="hidden md:block">{{ (curSymbol == '$' ? '$ ' : curSymbol  + '/ ') + computed_price}}</span>
+                                    <span class=" md:block">{{ (curSymbol == '$' ? '$ ' : curSymbol  + '/ ') + computed_price}}</span>
 
                               
                                 </p>
