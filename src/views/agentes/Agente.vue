@@ -179,14 +179,18 @@ export default {
 
             GetFeaturedInmueblesByUser(params.id).then(res => {
                 if(res) this.initInmuebles(res.data, 'featured');
+                this.pageLoading = false;
             }).catch(err => {
                 console.log('featured inmuebles error', err);
+                this.pageLoading = false;
             });
 
             GetLatestInmueblesByUser(params.id).then(res => {
                 if(res) this.initInmuebles(res.data, 'latest');
+                this.pageLoading = false;
             }).catch(err => {
                 console.log('latest inmuebles error', err);
+                this.pageLoading = false;
             });
         }).catch(err => {
             console.log('home filters error');
@@ -251,8 +255,6 @@ export default {
 
             if(type === 'featured') this.featuredCards = _pub;
             else if(type === 'latest') this.latestCards = _pub;
-
-            this.pageLoading = false;
         },
         gotoInmuebles(type){
             if(type === 'featured'){
