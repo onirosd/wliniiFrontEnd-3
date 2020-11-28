@@ -24,7 +24,7 @@
 
                     <p
                         class="caption text-center"
-                    >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh</p>
+                    > <b>IMPORTANTE : </b>Le llegara un correo a la empresa a la cual quiere afiliarse y el le habilitara o no el acceso, cuando eso pase le llegara un correo con sus credenciales. </p>
                     <div class="flex flex-row justify-center">
                         <w-btn
                             @click="$router.push('/')"

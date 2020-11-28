@@ -26,7 +26,8 @@
                                 <w-icon icon="info" h="24px"></w-icon>
                                 <template slot="content">
                                     <p class="bold">Importante!</p>
-                                    <p>Introducir el Código de registro que le fue asignado en el MVCS Ejm: 00117</p>
+                                    <p> * Si tiene un codigo de agente inmobiliario, haga click en la pestaña llamada "REGISTRADOS MVCS".  </p> <br>
+                                    <p> * Si no tiene codigo de agente inmobiliario, haga click en la pestaña llamada "ASESORES INMOBILIARIAS".  </p>
                                 </template>
                             </w-snackbar>
                         </div>
@@ -43,7 +44,7 @@
                             >
                                 <template slot="snackbar">
                                     <p class="bold">Importante!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                    <p>Introducir el Código de registro que le fue asignado en el MVCS Ejm: 00117</p>
                                 </template>
                             </w-input>
 
@@ -52,17 +53,21 @@
                                 placeholder="Tipo"
                                 :options="['Agente', 'Empresa']"
                                 v-model="form.tipoempresa"
-                            ></w-select>
+
+                            >
+                                 <template slot="snackbar">
+                                    <p class="bold">Importante!</p>
+                                    <p>Elige que tipo de usuario eres , empresa o agente.</p>
+                                </template>
+
+                            </w-select>
 
                             <w-input
                                 v-model="form.phone"
                                 label="Número Teléfono"
                                 placeholder="Ingresar número"
                             >
-                                <template slot="snackbar">
-                                    <p class="bold">Importante!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
-                                </template>
+                              
                             </w-input>
 
                             <!-- <div class="my-5">
@@ -109,13 +114,13 @@
                             <div class="mt-10"></div>
                             <w-filterselect
                                 label="CODIGO MVCS O NOMBRE EMPRESA INMOBILIARIA"
-                                placeholder="Pendientes"
+                                placeholder="Ejem : 00198-PJ-MVCS o Empresa Cualquiera SA"
                                 :value="form2.code"
                                 :options="brokerList"
                                 @input="handleChangeCodigoPadre">
                                     <template slot="snackbar">
                                         <p class="bold">Importante!</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                        <p>Aqui puedes ingresar el codigo de agente inmobiliario de la empresaa a l que te quieres afiliar o el nombre.</p>
                                     </template>
                             </w-filterselect>
                             <!-- <div class="flex flex-row justify-center flex-wrap">
@@ -142,9 +147,9 @@
                                     >Buscar</w-btn>
                                 </div>
                             </div> -->
-                            <div
+                    <!--         <div
                                 class="primary-alert"
-                            >* Usted elegio la empresa: Corredores Peru SAC</div>
+                            >* Usted elegio la empresa: Corredores Peru SAC</div> -->
                             <div class="grey-alert">
                                 <p>Empresa: {{company.Nombres}}</p>
                                 <p>Estado: {{company.Estado}}</p>
@@ -159,7 +164,7 @@
                                     >
                                         <template slot="snackbar">
                                             <p class="bold">Importante!</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                            <p>Ingrese su primer nombre.</p>
                                         </template>
                                     </w-input>
                                 </div>
@@ -171,7 +176,7 @@
                                     >
                                         <template slot="snackbar">
                                             <p class="bold">Importante!</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                            <p>Ingrese su segundo nombre.</p>
                                         </template>
                                     </w-input>
                                 </div>
@@ -185,7 +190,7 @@
                                     >
                                         <template slot="snackbar">
                                             <p class="bold">Importante!</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                            <p>Ingrese su apellido paterno.</p>
                                         </template>
                                     </w-input>
                                 </div>
@@ -197,7 +202,7 @@
                                     >
                                         <template slot="snackbar">
                                             <p class="bold">Importante!</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                            <p>Ingrese su apellido materno.</p>
                                         </template>
                                     </w-input>
                                 </div>
@@ -210,7 +215,7 @@
                             >
                                 <template slot="snackbar">
                                     <p class="bold">Importante!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                    <p>Ingresa tu numero de documento de identidad.</p>
                                 </template>
                             </w-input>
                             <w-input
@@ -220,7 +225,7 @@
                             >
                                 <template slot="snackbar">
                                     <p class="bold">Importante!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuadas.</p>
+                                    <p>Ingresa tu correo electronico.</p>
                                 </template>
                             </w-input>
                             <div style="margin-top: 1.25rem">

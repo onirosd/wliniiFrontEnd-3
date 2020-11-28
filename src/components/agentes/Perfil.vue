@@ -50,8 +50,8 @@
                         <w-snackbar class="mt-1">
                             <w-icon icon="info" h="24px"></w-icon>
                             <template slot="content">
-                                <p class="bold">Importante!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit</p>
+                                <p class="bold">Información!</p>
+                                <p>Aqui se muestran los datos que los demas agentes y personas que ingresen a la plataforma veran.</p>
                             </template>
                         </w-snackbar>
                     </div>
