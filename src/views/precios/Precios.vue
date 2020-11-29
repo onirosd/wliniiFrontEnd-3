@@ -164,15 +164,43 @@ export default {
 
             this.cards1 = [];
             data.items.forEach(item => {
-                if(!this.history || item.Tipo !== "Gratuito"){
-                    this.cards1.push({
+                if(!this.history){
+                   
+                    if( item.Tipo == "Gratuito"){
+
+                        this.cards1.push({
                         id: item.IdSuscripcion,
                         tipo: item.Tipo,
                         tarifa: parseFloat(item.Num_Costo),
                         descr: item.Des_Descripcion,
                         expire: this.currentItem && this.currentItem.IdSuscripcion.trim() === item.IdSuscripcion.trim() ? this.currentItem.Fec_FechaFin : null
                     });
+
+                    }
+                    
+                }else{
+
+                    if(this.history){
+
+                         if( item.Tipo !== "Gratuito"){
+
+                        this.cards1.push({
+                        id: item.IdSuscripcion,
+                        tipo: item.Tipo,
+                        tarifa: parseFloat(item.Num_Costo),
+                        descr: item.Des_Descripcion,
+                        expire: this.currentItem && this.currentItem.IdSuscripcion.trim() === item.IdSuscripcion.trim() ? this.currentItem.Fec_FechaFin : null
+                         });
+
+                       }
+
+
+                    }
+
                 }
+
+
+
             });
         },
         gotoSubscription(subscriptionId, type){
