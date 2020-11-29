@@ -228,6 +228,13 @@
                                     <p>Ingresa tu correo electronico.</p>
                                 </template>
                             </w-input>
+                            <w-input
+                                v-model="form2.phone"
+                                label="Número Teléfono"
+                                placeholder="Ingresar número"
+                            >
+                              
+                            </w-input>
                             <div style="margin-top: 1.25rem">
                                 <p class="bold ml-5">¿Posee usuario WLINII ?</p>
                                 <w-switch
@@ -330,7 +337,7 @@ export default {
             if(this.code){
                 payload = {
                     CodigoMVCSPadre: this.getCodeFromBrokerInfo(this.form2.code),
-                    Telefono: '123123',
+                    Telefono: this.form2.phone,
                     Correo: this.form2.email,
                     DocumentoID: this.form2.documentId,
                     Mensaje: "",//this.form2.description,
@@ -345,7 +352,7 @@ export default {
                 payload = {
                     CodigoMVCS: this.form.code,
                     IdTipoPersona: this.form.tipoempresa == "Empresa" ? "3" : "1",
-                    Telefono: '123123',
+                    Telefono: this.form.phone,
                     Mensaje: "",//this.form.description,
                     CodigoMVCSPadre: ""//this.form.afiliado ? this.form.afiliado : ""
                 }
