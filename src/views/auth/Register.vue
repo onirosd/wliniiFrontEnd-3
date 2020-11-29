@@ -65,8 +65,22 @@
                             <w-input
                                 v-model="form.phone"
                                 label="Número Teléfono"
-                                placeholder="Ingresar número"
+                                placeholder="Ejem : 51989765457"
                             >
+
+                            <template slot="snackbar">
+                                    <p class="bold">Importante!</p>
+                                    <p>Al momento de agregar su numero telefonico , primero ingresar el prefijo del codigo pais.
+  
+                                     </p> <br>
+                                     Ejemplo  :<br>
+ 
+                                     51989765643 <br><br>
+
+                                     51        = prefijo <br>
+                                     989765643 = Numero Celular
+
+                                </template>
                               
                             </w-input>
 
@@ -231,10 +245,25 @@
                             <w-input
                                 v-model="form2.phone"
                                 label="Número Teléfono"
-                                placeholder="Ingresar número"
+                                placeholder="Ejem : 51989765457"
                             >
+
+                            <template slot="snackbar">
+                                    <p class="bold">Importante!</p>
+                                    <p>Al momento de agregar su numero telefonico , primero ingresar el prefijo del codigo pais.
+  
+                                     </p> <br>
+                                     Ejemplo  :<br>
+ 
+                                     51989765643 <br><br>
+
+                                     51        = prefijo <br>
+                                     989765643 = Numero Celular
+
+                             </template>
                               
                             </w-input>
+
                             <div style="margin-top: 1.25rem">
                                 <p class="bold ml-5">¿Posee usuario WLINII ?</p>
                                 <w-switch
