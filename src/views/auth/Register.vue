@@ -40,7 +40,7 @@
                             <w-input
                                 v-model="form.code"
                                 label="Código MVCS"
-                                placeholder="Ingresar nombre / Codigo"
+                                placeholder="Ejem : 00198-PJ-MVCS"
                             >
                                 <template slot="snackbar">
                                     <p class="bold">Importante!</p>
