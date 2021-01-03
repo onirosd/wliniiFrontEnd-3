@@ -3,7 +3,7 @@
         <div class="flex flex-row justify-between flex-wrap agent-component">
             <div class="w-full md:w-1/3">
                 <div class="block md:hidden ml-1">
-                    <p class="bold">PERFIL AGENTES</p>
+                    <p class="bold">Perfil Asesor / Agente</p>
                     <div class="divider my-5"></div>
                 </div>
                 <div class="flex flex-col items-center flex-wrap">
@@ -11,7 +11,7 @@
                         <img :src="agent.img" class="agent-img" />
                     </div>
                     <div class="hidden md:w-full md:flex md:flex-row md:justify-center md:flex-wrap">
-                        <p class="my-3">Valoración del agente</p>
+                        <p class="my-3">Valoración del {{agent.tipo_usuario == 1 ? 'Agente':(agent.tipo_usuario == 2 ? 'Asesor': 'Broker')}} </p>
                         <div class="w-full flex flex-row justify-center">
                             <w-btn
                                 :icon="true"
@@ -46,7 +46,7 @@
             <div class="w-full md:w-2/3">
                 <div class="hidden md:block">
                     <div class="flex justify-between items-center">
-                        <p class="bold">PERFIL AGENTES</p>
+                        <p class="bold">Perfil {{agent.tipo_usuario == 1 ? 'Agente':(agent.tipo_usuario == 2 ? 'Asesor': 'Broker')}}</p>
                         <w-snackbar class="mt-1">
                             <w-icon icon="info" h="24px"></w-icon>
                             <template slot="content">
@@ -60,11 +60,15 @@
                 <p class="subtitle bold mt-5 md:mt-0">{{ agent.name }}</p>
                 <p class="mb-8">{{ agent.dir }}</p>
                 <p class="bold">{{ agent.empresa }}</p>
-                <p class="md:mb-10">Codigo Ministerio de vivienda: {{ agent.NUsuario }}</p>
+                <p class="md:mb-10">
+                {{ agent.tipo_usuario == 2 ?  'Codigo Ministerio de Vivienda de Empresa Afiliada '+ agent.usuario_padre : 'Codigo Ministerio de Vivienda '+agent.NUsuario }}
+               
+
+                </p>
                 <div class="full-divider block md:hidden mt-5"></div>
                 <div class="flex flex-row flex-wrap md:hidden">
                     <div class="w-1/2 self-center">
-                        <p class="my-3">Valoración del agente</p>
+                        <p class="my-3">Valoración del {{agent.tipo_usuario == 1 ? 'Agente':(agent.tipo_usuario == 2 ? 'Asesor': 'Broker')}} </p>
                     </div>
                     <div class="w-1/2 self-center">
                         <div class="w-full flex flex-row justify-center">
@@ -134,7 +138,8 @@
                             <p class="bold">{{ t.name }}</p>
                             <p class="title">{{ t.n }}</p>
                             <div class="flex flex-row">
-                                <p>{{ t.state }} {{ t.percentaje }}</p>
+                              <!--   <p>{{ t.state }} {{ t.percentaje }}</p> -->
+                                <p>{{ t.state }}</p>
                                 <div v-if="t.state == 'up'" class="arrow-up"></div>
                                 <div v-if="t.state == 'down'" class="arrow-down"></div>
                             </div>
@@ -163,12 +168,14 @@ export default {
             {
                 name: "Activas",
                 n: 0,
-                state: "down",
+                state: "up",
                 percentaje: "1%"
             },
             {
                 name: "Cancelada",
-                n: 0
+                n: 0,
+                state: "down",
+                percentaje: "1%"
             }
         ],
         
@@ -209,7 +216,9 @@ export default {
                 facebook: data.Des_Rs_Facebook,
                 linkedin: data.Des_Rs_Linkedin,
                 twitter: data.Des_Rs_Twitter,
-                instagram: data.Des_Rs_Instagram
+                instagram: data.Des_Rs_Instagram,
+                tipo_usuario : data.Num_TipoUsuario,
+                usuario_padre : data.NUsuarioPadre
             }
 
             this.transacciones[0].n = parseInt(data.Num_Transacciones) || 0;

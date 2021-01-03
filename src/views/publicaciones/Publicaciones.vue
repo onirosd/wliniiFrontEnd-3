@@ -132,7 +132,7 @@
                         </div>
                         
                         <w-input
-                          label="Monto de la Transacción"
+                          placeholder="Monto de la Transacción"
                           type="Number"
                           :tile="true"
                           color="secondary"
@@ -469,7 +469,19 @@ export default {
           _comision = 0;
         }
 
-        let _state = this.defaultOptions.pub_states.find(s => s.Id_EstadoPublicacion === p.Id_EstadoPublicacion);
+
+        let comprobar_estado = 0;
+        if(this.isManager  === false){
+            
+            comprobar_estado = p.detail[0].Id_EstadoPublicacion;
+           
+        }else{
+            
+            comprobar_estado = p.Id_EstadoPublicacion;
+
+        }
+
+        let _state = this.defaultOptions.pub_states.find(s => s.Id_EstadoPublicacion === comprobar_estado);
         _state = _state.Descripcion;
 
         

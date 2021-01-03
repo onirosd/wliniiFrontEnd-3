@@ -230,7 +230,7 @@ export default {
             else _finalPrice = (this.soldResult.average + this.offerResult.average)/2;
             this.finalPrice = parseFloat(_finalPrice.toFixed(3));
 
-            _finalPrice = _finalPrice*parseFloat(this.config.totalarea);
+            _finalPrice = Math.trunc(_finalPrice*parseFloat(this.config.totalarea));
             this.computed_price =  new Intl.NumberFormat().format(_finalPrice.toFixed(3)) ;
         },
         calculateResult(data){
@@ -308,7 +308,7 @@ export default {
                 let _url = URL.createObjectURL(res.data);
                 const link = document.createElement("a");
                 link.href = _url;
-                link.download = 'analisis';
+                link.download = 'AMC_Departamento';
                 document.body.appendChild(link);
                 link.click();
                 // window.open(_url, '_blank');

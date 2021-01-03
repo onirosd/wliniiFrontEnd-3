@@ -27,7 +27,7 @@
                                 <template slot="content">
                                     <p class="bold">Importante!</p>
                                     <p> * Si tiene un codigo de agente inmobiliario, haga click en la pestaña llamada "REGISTRADOS MVCS".  </p> <br>
-                                    <p> * Si no tiene codigo de agente inmobiliario, haga click en la pestaña llamada "ASESORES INMOBILIARIAS".  </p>
+                                    <p> * Si no posee codigo de agente inmobiliario, haga click en la pestaña llamada "ASESORES INMOBILIARIOS". </p>
                                 </template>
                             </w-snackbar>
                         </div>
@@ -134,9 +134,14 @@
                                 @input="handleChangeCodigoPadre">
                                     <template slot="snackbar">
                                         <p class="bold">Importante!</p>
-                                        <p>Aqui puedes ingresar el codigo de agente inmobiliario de la empresaa a l que te quieres afiliar o el nombre.</p>
+                                        <p>Aqui puedes buscar el codigo de agente inmobiliario de la empresa a la cual te vas a  afiliar. <br>
+                                        <p>OJO :  Solo se permitira la afiliación si se comprueba que efectivamente esta es una empresa, Caso contrario sera denegada la solicitud.
+                                        </p>
+
+                                        </p>
                                     </template>
                             </w-filterselect>
+
                             <!-- <div class="flex flex-row justify-center flex-wrap">
                                 <div class="w-full md:w-1/2 pr-0 md:pr-2">
                                     <w-input

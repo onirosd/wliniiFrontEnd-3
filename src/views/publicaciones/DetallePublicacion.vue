@@ -565,7 +565,7 @@ export default {
                 
                 const link = document.createElement("a");
                 link.href = _url;
-                link.download = 'detalle';
+                link.download = 'FichaTecnica_'+this.property.name;
                 document.body.appendChild(link);
                 link.click();
                 // window.open(_url, '_blank');

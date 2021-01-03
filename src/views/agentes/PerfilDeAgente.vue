@@ -9,7 +9,7 @@
     <div class>
         <div class="agente-perfil-container">
             <w-card :shadow="false">
-                <p class="subtitle bold mt-5 ml-5">Perfil de Agente</p>
+                <p class="subtitle bold mt-5 ml-5">Perfil Broker</p>
                 <p class="ml-5 mb-4">Agregar y editar información litado</p>
 
                 <!-- <div class="lg:w-2/3 primary rounded-bl-full rounded-r-full lg:ml-5 mb-4 p-4">
