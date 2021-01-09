@@ -202,7 +202,7 @@ export default new Router({
             component: DetallePublicacion,
             meta: {
                 auth: true,
-                roles: ["1", "2"]
+                roles: ["1", "2", "3"]
             }
         },
 

@@ -642,7 +642,7 @@ export default {
       this.$router.push('/publicaciones/editar/' + id);
     },
     gotoDetailPage(id){
-      if(!this.isManager) return;
+      //if(!this.isManager) return;
       this.$router.push('/publicaciones/detalle/' + id);
     },
 

@@ -228,7 +228,8 @@ export default {
             let _finalPrice = 0;
             if(this.soldResult.average == 0 || this.offerResult.average == 0) _finalPrice = this.soldResult.average + this.offerResult.average;
             else _finalPrice = (this.soldResult.average + this.offerResult.average)/2;
-            this.finalPrice = parseFloat(_finalPrice.toFixed(3));
+            this.finalPrice = Math.trunc(new Intl.NumberFormat().format(parseFloat(_finalPrice.toFixed(3))));
+            //Math.trunc(parseFloat(_finalPrice.toFixed(3)));
 
             _finalPrice = Math.trunc(_finalPrice*parseFloat(this.config.totalarea));
             this.computed_price =  new Intl.NumberFormat().format(_finalPrice.toFixed(3)) ;
