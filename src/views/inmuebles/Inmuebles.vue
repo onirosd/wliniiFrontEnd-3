@@ -311,6 +311,7 @@ export default {
 
       if(name === 'Superficie') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
       if(name === 'Precio') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
+      // if(name === 'Antiguedad') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
       if(name === 'Dormitorios') this.panels[index].display = value ? 'Dormitorios: ' + value : null;
       if(name === 'Baños') this.panels[index].display = value ? 'Baños: ' + value : null;
       if(name === 'Estacionamientos') this.panels[index].display = value ? 'Estacionamientos: ' + value : null;
@@ -383,6 +384,13 @@ export default {
         reqParams['IdTipoMoneda'] = findMoneda.IdTipoMoneda;
         reqParams['Num_Precio'] = [Number(price.from), Number(price.to)];
       }
+
+      // if(this.panels[9].selectOption){
+      //   let antiguedad = this.panels[9].selectOption;
+      //   reqParams['Num_Antiguedad'] = [Number(antiguedad.from), Number(antiguedad.to)];
+       
+      // }
+
 
       return reqParams;
     },

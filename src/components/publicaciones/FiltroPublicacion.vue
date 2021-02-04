@@ -49,6 +49,19 @@
         </w-panel>
 
         <w-panel
+          v-else-if="panel.type === 'selection-range2'"
+          class="panel-disable"
+          :toggle="panel.toggle ? true : false"
+          :header="panel.name"
+          v-model="panel.state">
+            <range-filter2
+              :disabled="disabled"
+              :options ="panel.options[0]"
+              :value="panel.selectOption"
+              @changeRange="handleChangeFilter(panel.name, $event)"/>
+        </w-panel>
+
+        <w-panel
           v-else-if="panel.type === 'row'"
           class="row-items toggle-disable"
           :toggle="panel.toggle ? true : false"
@@ -79,6 +92,7 @@
 
 <script>
 import RangeFilter from "./RangeFilter";
+import RangeFilter2 from "./RangeFilter2";
 export default {
   name: "FiltroPublicacion",
   props: {
@@ -91,7 +105,8 @@ export default {
     };
   },
   components: {
-    RangeFilter
+    RangeFilter,
+    RangeFilter2,   
   },
   computed: {
     filtros() {
@@ -115,8 +130,7 @@ export default {
     },
     unset(op) {
       if(this.disabled) return;
-      const find = this.panels.find(element => element.selectOption == op);
-
+      const find  = this.panels.find(element => element.selectOption == op);
       const index = this.panels.indexOf(find);
       this.panels[index].selectOption = null;
     },

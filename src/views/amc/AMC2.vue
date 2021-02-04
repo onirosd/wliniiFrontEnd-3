@@ -310,14 +310,23 @@ export default {
           selectOption: null,
           range: []
         },
+        // {
+        //   state: false,
+        //   name: "Precio",
+        //   type: "selection-range",
+        //   toggle: true,
+        //   options: ["Soles", "Dolares", "Euros"],
+        //   selectOption: null,
+        //   range: []
+        // },
         {
-          state: false,
-          name: "Precio",
-          type: "selection-range",
-          toggle: true,
-          options: ["Soles", "Dolares", "Euros"],
-          selectOption: null,
-          range: []
+      state: false,
+      name: "Antiguedad",
+      type: "selection-range2",
+      toggle: true,
+      options: ['Antiguedad'],
+      selectOption: null,
+      range: []
         }
       ]
     };
@@ -504,7 +513,9 @@ export default {
       this.panels[index].selectOption = value;
 
       if(name === 'Superficie') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
-      if(name === 'Precio') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
+      // if(name === 'Precio') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
+      if(name === 'Antiguedad') this.panels[index].display = value ? value.option + ': ' + value.from + ' - ' + value.to : null;
+
       if(name === 'Dormitorios') this.panels[index].display = value ? 'Dormitorios: ' + value : null;
       if(name === 'Baños') this.panels[index].display = value ? 'Baños: ' + value : null;
       if(name === 'Estacionamientos') this.panels[index].display = value ? 'Estacionamientos: ' + value : null;
@@ -576,12 +587,19 @@ export default {
           reqParams['Num_AreaTechado'] = [Number(superficie.from), Number(superficie.to)];
       }
 
+      // if(this.panels[8].selectOption){
+      //   let price = this.panels[8].selectOption;
+      //   let findMoneda = this.defaultOptions.moneda_types.find(m => m.Descripcion === price.option);
+      //   reqParams['IdTipoMoneda'] = findMoneda.IdTipoMoneda;
+      //   reqParams['Num_Precio'] = [Number(price.from), Number(price.to)];
+      // }
+
       if(this.panels[8].selectOption){
-        let price = this.panels[8].selectOption;
-        let findMoneda = this.defaultOptions.moneda_types.find(m => m.Descripcion === price.option);
-        reqParams['IdTipoMoneda'] = findMoneda.IdTipoMoneda;
-        reqParams['Num_Precio'] = [Number(price.from), Number(price.to)];
+        let antiguedad = this.panels[8].selectOption;
+        reqParams['Num_Antiguedad'] = [Number(antiguedad.from), Number(antiguedad.to)];
+       
       }
+
 
       return reqParams;
     },

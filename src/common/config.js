@@ -122,5 +122,14 @@ export const Filters = [
       options: ["Soles", "Dolares", "Euros"],
       selectOption: null,
       range: []
-    }
+     }
+    // {
+    //   state: false,
+    //   name: "Antiguedad",
+    //   type: "selection-range2",
+    //   toggle: true,
+    //   options: ['Antiguedad'],
+    //   selectOption: null,
+    //   range: []
+    // }
   ]

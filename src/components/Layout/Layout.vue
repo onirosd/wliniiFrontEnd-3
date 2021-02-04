@@ -32,7 +32,7 @@
                                 </w-nav-btn>
                             </div>
                             <div class="custom-items-margin hidden lg:block">
-                                <w-nav-btn icon="whatsapp-default" iconH="30px" @click="openWindow('https://bit.ly/2ZJgJ0c')"></w-nav-btn>
+                                <w-nav-btn icon="whatsapp-default" iconH="30px" @click="openWindow('https://bit.ly/3refu4q')"></w-nav-btn>
                                 <w-nav-btn icon="facebook-white" iconH="30px" @click="openWindow('https://www.facebook.com/WliniiAgentes')"></w-nav-btn>
                                 <w-nav-btn icon="instagram-white" iconH="30px" @click="openWindow('https://www.instagram.com/Wliniiperu')"></w-nav-btn>
                                 <w-nav-btn icon="twitter-white" iconH="30px" @click="openWindow('https://twitter.com/Wlinii')"></w-nav-btn>
