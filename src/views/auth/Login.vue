@@ -71,7 +71,7 @@ export default {
                     this.$store.dispatch('setUserAvatar', res.data.avatar);
                     localStorage.setItem("logged", true);
                     
-                    let _type = res.data.role.trim();
+                    let _type = res.data.role.toString().trim();
                     if( _type == "1" || _type == "2") CheckUserSubscription();
 
                     this.$router.push({path: '/'});
@@ -80,7 +80,7 @@ export default {
                     notify('error', null, 'error de inicio de sesion');
                 }
             }).catch(err => {
-                notify('error', null, 'error de inicio de sesion');
+                notify('error', null, err);
             });
         },
         gotoRecuperar(){

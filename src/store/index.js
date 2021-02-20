@@ -47,7 +47,7 @@ export default new Vuex.Store({
             commit('setUserName', name.trim());
         },
         setUserType ({commit}, type) {
-            commit('setUserType', type.trim());
+            commit('setUserType', type.toString().trim());
         },
         setUserAvatar ({commit}, avatar) {
             commit('setUserAvatar', avatar ? avatar.trim() : null);
