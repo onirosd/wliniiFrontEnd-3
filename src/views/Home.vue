@@ -22,7 +22,7 @@
                 <div class="w-full md:w-2/3 lg:w-2/3 self-center">
                     <w-card :shadow="false" class="banner-card" style="overflow: visible">
                         <div class="flex flex-row items-center">
-                            <h1 class="body bold white-text">Busqueda</h1>
+                            <h1 class="body bold white-text">Búsqueda</h1>
                             <w-icon icon="map" h="17px"></w-icon>
                         </div>
                         <!-- <p class="white-text mt-5 hidden md:block">
@@ -57,7 +57,7 @@
                             ></w-select>
                             <w-checkbox
                                 :dark="true"
-                                label="¿Mostrar busqueda en el mapa?"
+                                label="¿Mostrar búsqueda en el mapa?"
                                 style=" font-size:30px;"
                                 v-model="homeForm.mapa"
 
